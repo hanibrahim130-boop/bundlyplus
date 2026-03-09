@@ -89,7 +89,7 @@ export default function ProductCard({ product }: { product: Product }) {
     >
       <motion.div
         onClick={handleCardClick}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d", display: "flex", flexDirection: "column" }}
+        style={{ rotateX, rotateY, display: "flex", flexDirection: "column" }}
         className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,122,77,0.08)] cursor-pointer"
         data-testid={`card-product-${product.id}`}
         whileHover={{ scale: 1.01 }}
@@ -108,10 +108,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         )}
 
-        <div
-          className="relative flex items-center justify-center p-6 bg-gradient-to-br from-white/[0.04] to-transparent min-h-[100px]"
-          style={{ transform: "translateZ(8px)" }}
-        >
+        <div className="relative flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-white/[0.04] to-transparent min-h-[80px] sm:min-h-[100px]">
           {product.image_url ? (
             <img
               src={product.image_url}
@@ -125,7 +122,7 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
-        <div className="flex flex-1 flex-col p-4">
+        <div className="flex flex-1 flex-col p-3 sm:p-4">
           <div className="mb-3 flex items-start justify-between gap-2">
             <div className="min-w-0">
               <h3 className="text-sm font-bold text-white leading-tight truncate" data-testid={`text-product-name-${product.id}`}>
