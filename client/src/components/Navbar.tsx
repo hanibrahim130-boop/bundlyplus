@@ -4,7 +4,6 @@ import { ShoppingBag, User, Search, X, Menu } from "lucide-react";
 import AuthModal from "./AuthModal";
 import { useCartStore } from "../store/cartStore";
 import { useLocation } from "wouter";
-import bundlyLogoImg from "@assets/image_1773098162629.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "#" },
@@ -14,7 +13,17 @@ const NAV_LINKS = [
 ];
 
 function BundlyLogo({ size = 32 }: { size?: number }) {
-  return <img src={bundlyLogoImg} alt="Bundly+" width={size} height={size} className="object-contain" style={{ mixBlendMode: 'screen' }} />;
+  return (
+    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
+      <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
+      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" />
+      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.6" />
+      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.7" />
+      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.4" />
+      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.5" />
+    </svg>
+  );
 }
 
 export default function Navbar() {
