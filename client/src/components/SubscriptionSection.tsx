@@ -105,7 +105,7 @@ function PlanCard({ plan, selected, onSelect, delay }: {
           </div>
         )}
 
-        <div className="p-7 flex-1 flex flex-col" style={{ transform: "translateZ(10px)" }}>
+        <div className="p-4 sm:p-7 flex-1 flex flex-col" style={{ transform: "translateZ(10px)" }}>
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-3">
               <div
@@ -191,7 +191,7 @@ export default function SubscriptionSection() {
       />
       <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#ff7a4d]/5 blur-[110px]" />
 
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 md:px-10 lg:px-14">
+      <div className="mx-auto max-w-[1200px] px-2 sm:px-6 md:px-10 lg:px-14">
         <div style={{ perspective: "1000px" }}>
           <motion.div
             style={{ rotateX: headingRotateX, opacity: headingOpacity, y: headingY }}

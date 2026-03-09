@@ -68,7 +68,7 @@ export default function Testimonials() {
     <section ref={sectionRef} className="relative overflow-hidden bg-[#050505] py-24 md:py-36">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39efd0]/5 blur-[140px]" />
 
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10 lg:px-14">
+      <div className="mx-auto max-w-[1400px] px-2 sm:px-6 md:px-10 lg:px-14">
         <div style={{ perspective: "1000px" }}>
           <motion.div
             style={{ rotateX: headingRotateX, opacity: headingOpacity, y: headingY }}
@@ -106,7 +106,7 @@ export default function Testimonials() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.85, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ scale: 1.03, rotateY: 2, z: 20, transition: { duration: 0.2 } }}
-                className="flex flex-col gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 backdrop-blur-xl cursor-default"
+                className="flex flex-col gap-4 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-6 backdrop-blur-xl cursor-default"
                 style={{ transformStyle: "preserve-3d" }}
                 data-testid={`card-review-${i}`}
               >
