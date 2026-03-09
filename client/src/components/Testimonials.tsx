@@ -68,7 +68,7 @@ export default function Testimonials() {
     <section ref={sectionRef} className="relative overflow-hidden bg-[#050505] py-24 md:py-36">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39efd0]/5 blur-[140px]" />
 
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10 lg:px-14">
         <div style={{ perspective: "1000px" }}>
           <motion.div
             style={{ rotateX: headingRotateX, opacity: headingOpacity, y: headingY }}

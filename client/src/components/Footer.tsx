@@ -42,7 +42,7 @@ export default function Footer() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff7a4d]/5 blur-[200px]" />
 
-      <motion.div style={{ y, opacity }} className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14">
+      <motion.div style={{ y, opacity }} className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10 lg:px-14">
         <div className="mb-20">
           <h2
             style={{ fontFamily: "var(--font-syne)" }}

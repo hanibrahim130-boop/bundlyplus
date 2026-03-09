@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#050505] min-h-screen">
+    <main className="bg-[#050505] min-h-screen overflow-x-hidden w-full">
       <Navbar />
       <HeroSection />
       <MarqueeTicker />

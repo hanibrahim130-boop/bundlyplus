@@ -58,9 +58,9 @@ export default function FeatureBento() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 md:p-12"
+              className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-8 md:p-12"
             >
-              <div className="absolute right-6 top-6 flex flex-col items-end gap-1">
+              <div className="absolute right-5 top-5 sm:right-6 sm:top-6 flex flex-col items-end gap-1">
                 <span className="text-xs uppercase tracking-widest text-white/30">Max Savings</span>
                 <span style={{ fontFamily: "var(--font-syne)" }} className="text-5xl font-bold text-[#ffd700]">50%</span>
               </div>
@@ -98,7 +98,7 @@ export default function FeatureBento() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 md:p-12"
+              className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-8 md:p-12"
             >
               <div className="mb-6 flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#39efd0] animate-pulse" />
@@ -138,7 +138,7 @@ export default function FeatureBento() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-8"
+                className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-6 md:p-8"
               >
                 <h4 style={{ fontFamily: "var(--font-syne)" }} className="mb-2 text-lg font-bold uppercase tracking-tight text-white">
                   {card.title}

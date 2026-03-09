@@ -57,7 +57,7 @@ export default function MockupSection() {
         transition={{ duration: 10, repeat: Infinity, delay: 2 }}
       />
 
-      <motion.div style={{ opacity }} className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14">
+      <motion.div style={{ opacity }} className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10 lg:px-14">
         <div className="grid items-center gap-16 md:grid-cols-2 md:gap-20">
           <div>
             <motion.span
