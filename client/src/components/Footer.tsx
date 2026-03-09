@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUp, Github, Twitter, Linkedin } from "lucide-react";
 import { useRef } from "react";
+import bundlyLogoImg from "@assets/image_1773098162629.png";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
@@ -16,17 +17,7 @@ const SOCIAL = [
 ];
 
 function BundlyLogo({ size = 28 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 5h12c3.3 0 6 2.7 6 6s-2.7 6-6 6H8V5z" fill="white" />
-      <path d="M8 17h12.5c3.6 0 6.5 2.9 6.5 6.5S24.1 30 20.5 30H8V17z" fill="white" />
-      <rect x="12" y="9" width="7.5" height="4" rx="2" fill="#050505" />
-      <rect x="12" y="20" width="8.5" height="5.5" rx="2.75" fill="#050505" />
-      <rect x="3" y="8" width="3.5" height="3.5" rx="0.8" fill="#ff7a4d" opacity="0.5" />
-      <rect x="3" y="14" width="3.5" height="3.5" rx="0.8" fill="#ff7a4d" />
-      <rect x="3" y="20" width="3.5" height="3.5" rx="0.8" fill="#ff7a4d" />
-    </svg>
-  );
+  return <img src={bundlyLogoImg} alt="Bundly+" width={size} height={size} className="object-contain" style={{ mixBlendMode: 'screen' }} />;
 }
 
 export default function Footer() {
