@@ -1,4 +1,3 @@
-import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import MarqueeTicker from "@/components/MarqueeTicker";
@@ -13,7 +12,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="bg-[#050505] min-h-screen">
-      <CustomCursor />
       <Navbar />
       <HeroSection />
       <MarqueeTicker />
