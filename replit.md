@@ -67,3 +67,17 @@ server/
 ## Running
 
 `npm run dev` on port 5000 (Express + Vite on same port).
+
+## Deployment Rule
+
+**After every successful edit, immediately push the changed files to GitHub.**  
+GitHub repo: `hanibrahim130-boop/bundlyplus` (main branch)  
+Vercel is connected to this repo and auto-deploys on every push.
+
+Push workflow (using GitHub API via `@replit/connectors-sdk`):
+1. Collect changed file(s) content
+2. Create a new git tree on top of the latest commit tree (get latest SHA from `/repos/.../git/refs/heads/main`)
+3. Create a commit pointing to the new tree
+4. PATCH the `refs/heads/main` ref to the new commit SHA
+
+Connection ID: `connection:conn_github_01KKA8X6B2F85NXZQZJJG1X31H`
