@@ -1,9 +1,10 @@
 {
-    "version": 2,
-    "framework": "nextjs",
-    "buildCommand": "npx prisma generate && next build",
-    "installCommand": "npm install",
-    "regions": [
-        "sfo1"
-    ]
+  "version": 2,
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
