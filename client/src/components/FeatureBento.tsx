@@ -41,7 +41,7 @@ export default function FeatureBento() {
     <section id="features" ref={sectionRef} className="relative bg-[#050505] py-16 md:py-32 lg:py-44 overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
 
-      <div className="mx-auto max-w-[1400px] px-3 sm:px-6 md:px-10 lg:px-14">
+      <div className="mx-auto max-w-[1400px] px-2 sm:px-6 md:px-10 lg:px-14">
         <motion.div style={{ y: headlineY, opacity: headlineOpacity }} className="mb-20 max-w-3xl">
           <motion.span initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="mb-4 inline-block rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#ff7a4d]">
             Platform Features
@@ -173,7 +173,7 @@ export default function FeatureBento() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-6 md:p-10 lg:p-14"
+            className="rounded-none sm:rounded-2xl border-0 sm:border sm:border-white/[0.08] bg-transparent sm:bg-white/[0.02] p-0 sm:p-6 md:p-10 lg:p-14"
           >
             <div className="mb-8">
               <span className="mb-3 inline-block rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#ff7a4d]">

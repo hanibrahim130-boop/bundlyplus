@@ -90,7 +90,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <motion.div
         onClick={handleCardClick}
         style={{ rotateX, rotateY, display: "flex", flexDirection: "column" }}
-        className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,122,77,0.08)] cursor-pointer"
+        className="group relative rounded-xl sm:rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,122,77,0.08)] cursor-pointer"
         data-testid={`card-product-${product.id}`}
         whileHover={{ scale: 1.01 }}
         transition={{ duration: 0.15 }}
