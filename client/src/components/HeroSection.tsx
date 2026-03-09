@@ -134,7 +134,7 @@ export default function HeroSection() {
   const scrollToSubscriptions = () => document.querySelector("#subscriptions")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-[#050505] flex flex-col" data-testid="section-hero">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#050505] flex flex-col" style={{ minHeight: "100svh" }} data-testid="section-hero">
       <HeroBackground />
 
       <div className="relative z-10 flex flex-1 items-center">
