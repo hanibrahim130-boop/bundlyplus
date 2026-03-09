@@ -78,7 +78,7 @@ export default function ProductPage() {
       <Navbar />
       <CartDrawer />
 
-      <div className="mx-auto max-w-[1100px] px-6 pt-32 pb-24 md:px-10">
+      <div className="mx-auto max-w-[1100px] px-4 sm:px-6 pt-24 md:pt-32 pb-16 md:pb-24 md:px-10">
         <motion.a
           href="/"
           initial={{ opacity: 0, x: -10 }}
@@ -97,7 +97,7 @@ export default function ProductPage() {
             transition={{ duration: 0.6 }}
           >
             <div
-              className="mb-8 flex items-center justify-center rounded-3xl border border-white/[0.08] bg-white/[0.03] p-16"
+              className="mb-8 flex items-center justify-center rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 sm:p-14"
               style={{ boxShadow: `0 0 80px ${accentColor}15` }}
             >
               {product.image_url ? (
@@ -147,7 +147,7 @@ export default function ProductPage() {
 
             <h1
               style={{ fontFamily: "var(--font-syne)" }}
-              className="mb-4 text-4xl font-bold leading-tight text-white"
+              className="mb-4 text-3xl sm:text-4xl font-bold leading-tight text-white"
               data-testid="heading-product-name"
             >
               {product.name}
