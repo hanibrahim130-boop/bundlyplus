@@ -29,7 +29,7 @@ export default function ProductPage() {
   const [added, setAdded] = useState(false);
   const addToCart = useCartStore((s) => s.addToCart);
 
-  const { data: products = [], isLoading } = useQuery<Product[]>({ queryKey: ["/api/products"] });
+  const { data: products = [], isLoading } = useQuery<Product[]>({ queryKey: ["/products.json"] });
   const product = products.find((p) => p.id === id);
   const related = products.filter((p) => p.id !== id && p.category === product?.category).slice(0, 4);
 
