@@ -17,20 +17,28 @@ html {
   margin: 0;
   padding: 0;
   overflow-x: clip;
-}
-
-html, body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter);
-  max-width: 100%;
+  width: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
   min-height: 100vh;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .noise-overlay {
