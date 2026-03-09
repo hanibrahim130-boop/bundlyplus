@@ -61,9 +61,11 @@ export default function ProductCard({ product }: { product: Product }) {
     mouseY.set(0);
   };
 
-  const stop = (e: React.MouseEvent | React.TouchEvent) => e.stopPropagation();
+  const handleCardClick = () => {
+    window.location.href = `/product/${product.id}`;
+  };
 
-  const handleAdd = (e: React.MouseEvent) => {
+  const handleAdd = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
     addToCart({
       id: `${product.id}-${selectedDuration.months}mo`,
@@ -85,8 +87,8 @@ export default function ProductCard({ product }: { product: Product }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <motion.a
-        href={`/product/${product.id}`}
+      <motion.div
+        onClick={handleCardClick}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d", display: "flex", flexDirection: "column" }}
         className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,122,77,0.08)] cursor-pointer"
         data-testid={`card-product-${product.id}`}
@@ -142,15 +144,24 @@ export default function ProductCard({ product }: { product: Product }) {
               <div className="text-lg font-black text-white" data-testid={`text-price-${product.id}`}>
                 ${discountedPrice.toFixed(2)}
               </div>
-              <div className="text-[10px] text-white/30">USD</div>
+              <div className="text-[10px] text-white/30">
+                {selectedDuration.discount > 0 ? (
+                  <span className="text-[#39efd0]">-{selectedDuration.discount}%</span>
+                ) : "USD"}
+              </div>
             </div>
           </div>
 
-          <div className="mb-3 flex gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" onClick={stop}>
+          <div
+            className="mb-3 flex gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+          >
             {DURATIONS.map((d, i) => (
               <button
                 key={d.label}
-                onClick={(e) => { e.stopPropagation(); e.preventDefault(); setDuration(i); }}
+                onClick={(e) => { e.stopPropagation(); setDuration(i); }}
+                onTouchStart={(e) => e.stopPropagation()}
                 data-testid={`button-duration-${product.id}-${d.label}`}
                 className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold transition-all ${
                   duration === i
@@ -174,15 +185,22 @@ export default function ProductCard({ product }: { product: Product }) {
             </ul>
           )}
 
-          <div className="mt-auto flex gap-2" onClick={stop}>
-            <span
+          <div
+            className="mt-auto flex gap-2"
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+          >
+            <a
+              href={`/product/${product.id}`}
               data-testid={`link-product-${product.id}`}
+              onClick={(e) => e.stopPropagation()}
               className="flex-1 rounded-xl border border-white/10 bg-white/[0.03] py-2.5 text-center text-xs font-bold uppercase tracking-wider text-white/50 group-hover:border-white/25 group-hover:text-white transition-all"
             >
               View Details
-            </span>
+            </a>
             <button
               onClick={handleAdd}
+              onTouchStart={(e) => e.stopPropagation()}
               data-testid={`button-add-${product.id}`}
               className={`flex-1 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                 added
@@ -194,7 +212,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </button>
           </div>
         </div>
-      </motion.a>
+      </motion.div>
     </div>
   );
 }
