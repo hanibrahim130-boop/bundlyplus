@@ -144,8 +144,6 @@ function AuroraOrbs() {
           animate={{
             x: [0, orb.xRange, -orb.xRange * 0.5, orb.xRange * 0.3, 0],
             y: [0, -orb.yRange * 0.6, orb.yRange, -orb.yRange * 0.3, 0],
-            scale: [1, 1.15, 0.9, 1.1, 1],
-            opacity: [orb.opacity, orb.opacity * 1.6, orb.opacity * 0.7, orb.opacity * 1.3, orb.opacity],
           }}
           transition={{
             duration: orb.dur,
@@ -159,27 +157,25 @@ function AuroraOrbs() {
   );
 }
 
-function GridPulse() {
+function GridLayer() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <motion.div
+      <div
         className="absolute inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
           backgroundSize: "52px 52px",
+          opacity: 0.8,
         }}
-        animate={{ opacity: [0.5, 1, 0.6, 1, 0.5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         className="absolute inset-0"
         style={{
           backgroundImage:
             "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,122,77,0.04) 0%, transparent 70%)",
+          opacity: 0.8,
         }}
-        animate={{ scale: [1, 1.12, 0.95, 1.08, 1], opacity: [0.5, 1, 0.6, 1, 0.5] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
     </div>
   );
@@ -244,7 +240,7 @@ export default function HeroBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <AuroraOrbs />
-      <GridPulse />
+      <GridLayer />
       <ParticleCanvas />
       <ShootingStars />
       <div
