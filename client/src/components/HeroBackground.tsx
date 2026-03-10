@@ -1,17 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  alpha: number;
-  radius: number;
-  life: number;
-  maxLife: number;
-}
-
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -23,6 +12,15 @@ function ParticleCanvas() {
 
     let animId: number;
     let w = 0, h = 0;
+    let frame = 0;
+
+    interface Particle {
+      x: number; y: number;
+      vx: number; vy: number;
+      alpha: number; radius: number;
+      life: number; maxLife: number;
+    }
+
     const particles: Particle[] = [];
 
     const resize = () => {
@@ -36,27 +34,28 @@ function ParticleCanvas() {
     const spawn = (): Particle => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4 - 0.1,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35 - 0.08,
       alpha: 0,
-      radius: Math.random() * 1.5 + 0.4,
+      radius: Math.random() * 1.2 + 0.4,
       life: 0,
-      maxLife: Math.random() * 280 + 160,
+      maxLife: Math.random() * 240 + 140,
     });
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 35; i++) {
       const p = spawn();
       p.life = Math.random() * p.maxLife;
       particles.push(p);
     }
 
-    const CONNECTION_DIST = 100;
-
     const draw = () => {
+      animId = requestAnimationFrame(draw);
+      frame++;
+      if (frame % 2 !== 0) return;
+
       ctx.clearRect(0, 0, w, h);
 
-      if (Math.random() < 0.25) particles.push(spawn());
-      if (particles.length > 120) particles.splice(0, 1);
+      if (Math.random() < 0.07 && particles.length < 55) particles.push(spawn());
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
@@ -64,40 +63,22 @@ function ParticleCanvas() {
         p.y += p.vy;
         p.life++;
 
+        if (p.life >= p.maxLife) { particles.splice(i, 1); continue; }
+
         const halfLife = p.maxLife / 2;
-        p.alpha = p.life < halfLife
-          ? (p.life / halfLife)
-          : (1 - (p.life - halfLife) / halfLife);
-        p.alpha = Math.max(0, Math.min(1, p.alpha)) * 0.55;
+        const t = p.life < halfLife
+          ? p.life / halfLife
+          : 1 - (p.life - halfLife) / halfLife;
+        p.alpha = Math.max(0, Math.min(1, t)) * 0.5;
 
-        if (p.life >= p.maxLife) {
-          particles.splice(i, 1);
-          continue;
-        }
-
+        ctx.globalAlpha = p.alpha;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.alpha})`;
+        ctx.arc(p.x, p.y, p.radius, 0, 6.283);
+        ctx.fillStyle = "#ffffff";
         ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            const lineAlpha = (1 - dist / CONNECTION_DIST) * Math.min(p.alpha, q.alpha) * 0.35;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(255,122,77,${lineAlpha})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
       }
 
-      animId = requestAnimationFrame(draw);
+      ctx.globalAlpha = 1;
     };
     draw();
 
@@ -111,48 +92,17 @@ function ParticleCanvas() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 h-full w-full pointer-events-none"
+      style={{ willChange: "transform" }}
     />
   );
 }
 
-const ORBS = [
-  { color: "#ff7a4d", size: 560, x: "28%", y: "35%", dur: 14, xRange: 80, yRange: 60, blur: 140, opacity: 0.09 },
-  { color: "#ff4d4d", size: 380, x: "68%", y: "20%", dur: 19, xRange: 60, yRange: 80, blur: 120, opacity: 0.07 },
-  { color: "#39efd0", size: 300, x: "80%", y: "70%", dur: 16, xRange: 100, yRange: 50, blur: 130, opacity: 0.06 },
-  { color: "#5865F2", size: 260, x: "12%", y: "72%", dur: 22, xRange: 70, yRange: 90, blur: 110, opacity: 0.07 },
-  { color: "#ffb347", size: 200, x: "50%", y: "8%",  dur: 18, xRange: 120, yRange: 40, blur: 100, opacity: 0.05 },
-];
-
 function AuroraOrbs() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {ORBS.map((orb, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            width: orb.size,
-            height: orb.size,
-            left: orb.x,
-            top: orb.y,
-            translateX: "-50%",
-            translateY: "-50%",
-            background: orb.color,
-            filter: `blur(${orb.blur}px)`,
-            opacity: orb.opacity,
-          }}
-          animate={{
-            x: [0, orb.xRange, -orb.xRange * 0.5, orb.xRange * 0.3, 0],
-            y: [0, -orb.yRange * 0.6, orb.yRange, -orb.yRange * 0.3, 0],
-          }}
-          transition={{
-            duration: orb.dur,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 1.8,
-          }}
-        />
-      ))}
+      <div className="aurora-orb-1" />
+      <div className="aurora-orb-2" />
+      <div className="aurora-orb-3" />
     </div>
   );
 }
@@ -166,7 +116,6 @@ function GridLayer() {
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
           backgroundSize: "52px 52px",
-          opacity: 0.8,
         }}
       />
       <div
@@ -174,7 +123,6 @@ function GridLayer() {
         style={{
           backgroundImage:
             "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,122,77,0.04) 0%, transparent 70%)",
-          opacity: 0.8,
         }}
       />
     </div>
@@ -182,13 +130,9 @@ function GridLayer() {
 }
 
 const SHOOTING_STARS = [
-  { delay: 0,    dur: 1.8, startX: "10%",  startY: "8%",  angle: 35 },
-  { delay: 2.5,  dur: 1.4, startX: "55%",  startY: "3%",  angle: 28 },
-  { delay: 5.1,  dur: 2.0, startX: "75%",  startY: "12%", angle: 42 },
-  { delay: 8.3,  dur: 1.6, startX: "30%",  startY: "5%",  angle: 30 },
-  { delay: 11.7, dur: 1.5, startX: "85%",  startY: "18%", angle: 38 },
-  { delay: 14.2, dur: 1.9, startX: "5%",   startY: "20%", angle: 25 },
-  { delay: 17.6, dur: 1.3, startX: "62%",  startY: "2%",  angle: 45 },
+  { delay: 0,   dur: 1.8, startX: "15%", startY: "8%",  angle: 35 },
+  { delay: 6.5, dur: 1.5, startX: "60%", startY: "4%",  angle: 30 },
+  { delay: 14,  dur: 1.7, startX: "80%", startY: "14%", angle: 40 },
 ];
 
 function ShootingStars() {
@@ -196,25 +140,21 @@ function ShootingStars() {
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {SHOOTING_STARS.map((s, i) => {
         const rad = (s.angle * Math.PI) / 180;
-        const len = 180;
+        const len = 160;
         const dx = Math.cos(rad) * len;
         const dy = Math.sin(rad) * len;
         return (
           <motion.div
             key={i}
             className="absolute"
-            style={{ left: s.startX, top: s.startY }}
+            style={{ left: s.startX, top: s.startY, willChange: "transform, opacity" }}
             initial={{ opacity: 0, x: 0, y: 0 }}
-            animate={{
-              opacity: [0, 1, 0.7, 0],
-              x: [0, dx * 0.3, dx],
-              y: [0, dy * 0.3, dy],
-            }}
+            animate={{ opacity: [0, 1, 0], x: [0, dx], y: [0, dy] }}
             transition={{
               duration: s.dur,
               delay: s.delay,
               repeat: Infinity,
-              repeatDelay: 18 + i * 1.5,
+              repeatDelay: 22 + i * 4,
               ease: "easeIn",
             }}
           >
@@ -224,9 +164,8 @@ function ShootingStars() {
                 height: 1.5,
                 transform: `rotate(${s.angle}deg)`,
                 transformOrigin: "left center",
-                background: "linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,180,100,0.5), transparent)",
+                background: "linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,180,100,0.4), transparent)",
                 borderRadius: 2,
-                boxShadow: "0 0 6px rgba(255,200,120,0.6)",
               }}
             />
           </motion.div>
