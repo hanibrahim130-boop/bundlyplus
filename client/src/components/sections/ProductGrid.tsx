@@ -110,9 +110,10 @@ export default function ProductGrid() {
                     <img
                       src={sub.image}
                       alt={sub.name}
-                      className={`w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105 ${
+                      className={`w-full h-full object-cover group-hover:scale-105 ${
                         imageLoadStates[sub.id] ? 'opacity-100' : 'opacity-0'
                       }`}
+                      style={{ transition: "all 700ms cubic-bezier(0.4,0,0.2,1)" }}
                       onLoad={() => setImageLoadStates(prev => ({ ...prev, [sub.id]: true }))}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
