@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { Check, Zap, Star, Crown } from "lucide-react";
 
@@ -60,10 +60,16 @@ function PlanCard({ plan, selected, onSelect, delay }: {
   const mouseY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 25 });
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 25 });
+  const [isTouch, setIsTouch] = useState(true);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
 
   const Icon = plan.icon;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouch) return;
     const el = cardRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -77,15 +83,15 @@ function PlanCard({ plan, selected, onSelect, delay }: {
   };
 
   return (
-    <div ref={cardRef} style={{ perspective: "800px" }} onMouseMove={handleMouseMove} onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}>
+    <div ref={cardRef} style={isTouch ? undefined : { perspective: "800px" }} onMouseMove={handleMouseMove} onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }} className="w-full min-w-0">
       <motion.div
-        initial={{ opacity: 0, y: 70, rotateX: 20, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 70, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        style={isTouch ? undefined : { rotateX, rotateY, transformStyle: "preserve-3d" }}
         onClick={onSelect}
-        className={`relative flex flex-col rounded-2xl border bg-white/[0.02] backdrop-blur-xl overflow-hidden cursor-pointer transition-all duration-300 ${
+        className={`relative w-full flex flex-col rounded-2xl border bg-white/[0.02] backdrop-blur-xl overflow-hidden cursor-pointer transition-all duration-300 ${
           plan.popular
             ? "border-[#ff7a4d]/40 shadow-[0_0_60px_rgba(255,122,77,0.12)]"
             : selected
@@ -105,7 +111,7 @@ function PlanCard({ plan, selected, onSelect, delay }: {
           </div>
         )}
 
-        <div className="p-4 sm:p-7 flex-1 flex flex-col" style={{ transform: "translateZ(10px)" }}>
+        <div className="p-4 sm:p-7 flex-1 flex flex-col" style={isTouch ? undefined : { transform: "translateZ(10px)" }}>
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-3">
               <div
