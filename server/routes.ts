@@ -25,8 +25,24 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/checkout_sessions", async (_req, res) => {
-    res.json({ error: "Card checkout coming soon. Please use WhatsApp checkout." });
+  app.post("/api/checkout_sessions", async (req, res) => {
+    const { items } = req.body ?? {};
+
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ error: "Missing required field: items (must be a non-empty array)" });
+    }
+
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (!item.id || typeof item.id !== "string") {
+        return res.status(400).json({ error: `Item at index ${i} is missing required field: id` });
+      }
+      if (item.quantity == null || typeof item.quantity !== "number" || item.quantity < 1) {
+        return res.status(400).json({ error: `Item at index ${i} is missing or has invalid field: quantity (must be a positive number)` });
+      }
+    }
+
+    res.json({ message: "Card checkout coming soon. Please use WhatsApp checkout." });
   });
 
   return httpServer;
