@@ -1,4 +1,4 @@
-import { Plus, CreditCard, Smartphone, Wallet } from 'lucide-react';
+import { Plus, Smartphone, Wallet } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -24,16 +24,12 @@ export default function Hero() {
               Lebanon&apos;s #1 Subscription <span className="text-primary">Marketplace.</span>
             </h2>
             <p className="text-[18px] lg:text-[20px] text-[#666666] leading-[1.6] font-normal">
-              Premium streaming, gaming, and software subscriptions at unbeatable USD prices. Pay with Visa, OMT, or Whish Money - tailored for Lebanon.
+              Premium streaming, gaming, and software subscriptions at unbeatable USD prices. Pay with Whish Money, OMT, or USDT - tailored for Lebanon.
             </p>
 
             <div className="flex items-center gap-3 mt-2">
               <span className="text-[10px] font-bold uppercase tracking-[1px] text-[#999999]">Pay with:</span>
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-[#EEEEEE]">
-                  <CreditCard className="w-3.5 h-3.5 text-[#666666]" />
-                  <span className="text-[10px] font-bold text-[#666666]">VISA</span>
-                </div>
                 <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-[#EEEEEE]">
                   <Smartphone className="w-3.5 h-3.5 text-[#666666]" />
                   <span className="text-[10px] font-bold text-[#666666]">OMT</span>

@@ -10,7 +10,7 @@ const features = [
   },
   {
     title: "Local Payments",
-    description: "Pay with Visa, OMT, or Whish Money. We accept the payment methods Lebanese customers actually use.",
+    description: "Pay with Whish Money, OMT, or USDT. We accept the payment methods Lebanese customers actually use.",
     icon: <ShieldCheck className="w-8 h-8" />,
     stats: "100%",
     statsLabel: "Secure Transactions"

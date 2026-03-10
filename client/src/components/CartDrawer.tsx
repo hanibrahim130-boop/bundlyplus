@@ -1,5 +1,5 @@
 import { useCartStore } from "../store/cartStore";
-import { ShoppingCart, X, Plus, Minus, Trash2, CreditCard } from "lucide-react";
+import { ShoppingCart, X, Plus, Minus, Trash2 } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
 import PaymentMethods from "./PaymentMethods";
 
@@ -7,7 +7,6 @@ const WHATSAPP_NUMBER = "96176171003";
 
 export default function CartDrawer() {
   const [open, setOpen] = useState(false);
-  const [checking, setChecking] = useState(false);
 
   const items = useCartStore((s) => s.items);
   const totalPrice = useCartStore((s) => s.totalPrice);
@@ -32,30 +31,6 @@ export default function CartDrawer() {
     const msg = `Hello BundlyPlus! I want to order: ${orderLine}. Total: $${cartTotal.toFixed(2)} USD. Payment: Whish/OMT/USDT. Please confirm.`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   }, [items, cartTotal]);
-
-  async function handleStripeCheckout() {
-    if (items.length === 0) return;
-    setChecking(true);
-    try {
-      const res = await fetch("/api/checkout_sessions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: items.map((i) => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity })),
-        }),
-      });
-      const data = await res.json() as { url?: string; error?: string };
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert(data.error || "Checkout failed. Please try WhatsApp instead.");
-      }
-    } catch {
-      alert("Network error. Please order via WhatsApp.");
-    } finally {
-      setChecking(false);
-    }
-  }
 
   function handleWhatsAppCheckout() {
     if (!whatsappUrl) return;
@@ -159,16 +134,6 @@ export default function CartDrawer() {
                 <span className="text-sm text-slate-300">Total</span>
                 <span className="text-xl font-black text-white">${cartTotal.toFixed(2)} <span className="text-xs font-medium text-slate-500">USD</span></span>
               </div>
-
-              <button
-                onClick={handleStripeCheckout}
-                disabled={checking}
-                data-testid="button-pay-card"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff7a4d] to-[#ffb347] py-3.5 text-sm font-black text-black transition hover:opacity-90 disabled:opacity-60 shadow-[0_0_30px_rgba(255,122,77,0.35)]"
-              >
-                <CreditCard size={16} />
-                {checking ? "Redirecting…" : "Pay with Card"}
-              </button>
 
               <button
                 onClick={handleWhatsAppCheckout}
