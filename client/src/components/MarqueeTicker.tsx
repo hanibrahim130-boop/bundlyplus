@@ -61,7 +61,7 @@ export default function MarqueeTicker() {
     <motion.section
       ref={sectionRef}
       style={{ skewY, scale, opacity }}
-      className="relative overflow-hidden bg-[#050505] py-8 md:py-12"
+      className="relative overflow-x-clip bg-[#050505] py-8 md:py-12"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

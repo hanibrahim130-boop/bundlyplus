@@ -38,7 +38,7 @@ export default function FeatureBento() {
   const headlineOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   return (
-    <section id="features" ref={sectionRef} className="relative bg-[#050505] py-16 md:py-32 lg:py-44 overflow-hidden">
+    <section id="features" ref={sectionRef} className="relative bg-[#050505] py-16 md:py-32 lg:py-44 overflow-x-clip">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
 
       <div className="mx-auto max-w-[1400px] px-2 sm:px-6 md:px-10 lg:px-14">

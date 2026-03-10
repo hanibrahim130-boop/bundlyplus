@@ -179,7 +179,7 @@ export default function SubscriptionSection() {
   const selectedPlan = plans.find((p) => p.id === selected)!;
 
   return (
-    <section ref={sectionRef} id="subscriptions" className="relative bg-[#050505] py-24 md:py-36 overflow-hidden">
+    <section ref={sectionRef} id="subscriptions" className="relative bg-[#050505] py-24 md:py-36 overflow-x-clip">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
