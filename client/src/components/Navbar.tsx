@@ -64,9 +64,10 @@ export default function Navbar() {
     e.preventDefault();
     const q = query.trim();
     if (!q) return;
-    window.dispatchEvent(new CustomEvent("bundlyplus:search", { detail: q }));
-    const el = document.querySelector("#products");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    navigate(`/?q=${encodeURIComponent(q)}`);
+    setTimeout(() => {
+      document.querySelector("#products")?.scrollIntoView({ behavior: "smooth" });
+    }, 120);
     closeSearch();
   };
 

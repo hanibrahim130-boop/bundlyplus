@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSearch, useLocation } from "wouter";
 import ProductCard, { type Product } from "./ProductCard";
 import { SlidersHorizontal, ChevronDown, X } from "lucide-react";
 
@@ -15,6 +16,10 @@ const SORT_OPTIONS: { key: SortKey; label: string }[] = [
 ];
 
 export default function ProductGrid() {
+  const [, navigate] = useLocation();
+  const searchString = useSearch();
+  const urlQuery = new URLSearchParams(searchString).get("q") ?? "";
+
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -22,7 +27,8 @@ export default function ProductGrid() {
   const [sortKey, setSortKey] = useState<SortKey>("default");
   const [showSortMenu, setShowSortMenu] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
-  const [searchQuery, setSearchQuery] = useState("");
+
+  const searchQuery = urlQuery;
 
   useEffect(() => {
     async function load() {
@@ -42,19 +48,15 @@ export default function ProductGrid() {
   }, []);
 
   useEffect(() => {
-    const handler = (e: Event) => {
-      const q = (e as CustomEvent<string>).detail ?? "";
-      setSearchQuery(q);
+    if (urlQuery) {
       setActiveCategory("All");
-      setVisibleCount(INITIAL_VISIBLE);
-    };
-    window.addEventListener("bundlyplus:search", handler);
-    return () => window.removeEventListener("bundlyplus:search", handler);
-  }, []);
+    }
+    setVisibleCount(INITIAL_VISIBLE);
+  }, [urlQuery]);
 
   useEffect(() => {
     setVisibleCount(INITIAL_VISIBLE);
-  }, [activeCategory, sortKey, searchQuery]);
+  }, [activeCategory, sortKey]);
 
   const filtered = useMemo(() => {
     let list = activeCategory === "All" ? [...products] : products.filter((p) => p.category === activeCategory);
@@ -73,7 +75,7 @@ export default function ProductGrid() {
       case "name-asc": list.sort((a, b) => a.name.localeCompare(b.name)); break;
     }
     return list;
-  }, [products, activeCategory, sortKey]);
+  }, [products, activeCategory, sortKey, urlQuery]);
 
   const visible = filtered.slice(0, visibleCount);
   const remaining = filtered.length - visibleCount;
@@ -171,7 +173,7 @@ export default function ProductGrid() {
           <span className="text-xs text-white/40">Results for</span>
           <span className="flex items-center gap-1.5 rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/10 px-3 py-1 text-xs font-bold text-[#ff7a4d]">
             "{searchQuery}"
-            <button onClick={() => setSearchQuery("")} className="hover:text-white transition-colors">
+            <button onClick={() => navigate("/")} className="hover:text-white transition-colors" data-testid="button-clear-search">
               <X className="h-3 w-3" />
             </button>
           </span>
