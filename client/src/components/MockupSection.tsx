@@ -45,7 +45,7 @@ export default function MockupSection() {
   const handleLeave = () => { rx.set(0); ry.set(0); };
 
   return (
-    <section ref={sectionRef} className="relative overflow-x-clip bg-[#050505] py-32 md:py-48">
+    <section ref={sectionRef} className="relative bg-[#050505] py-32 md:py-48" style={{ overflowX: "hidden" }}>
       <motion.div
         className="pointer-events-none absolute top-1/4 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#ff7a4d]/10 blur-[160px]"
         animate={{ scale: [1, 1.15, 1] }}

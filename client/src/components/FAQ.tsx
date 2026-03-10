@@ -33,7 +33,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-[#050505] py-28 md:py-40 overflow-x-clip">
+    <section className="relative bg-[#050505] py-28 md:py-40" style={{ overflowX: "hidden" }}>
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff7a4d]/4 blur-[160px]" />
 
       <div className="mx-auto max-w-[900px] px-2 sm:px-6 md:px-10">

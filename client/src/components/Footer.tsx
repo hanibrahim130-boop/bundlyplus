@@ -38,7 +38,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer ref={ref} className="relative overflow-x-clip bg-[#050505] pb-10 pt-32 md:pt-48">
+    <footer ref={ref} className="relative bg-[#050505] pb-10 pt-32 md:pt-48" style={{ overflowX: "hidden" }}>
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff7a4d]/5 blur-[200px]" />
 
