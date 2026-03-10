@@ -51,7 +51,7 @@ export default function ProductPage() {
   }
 
   const selectedDuration = DURATIONS[duration];
-  const discountedPrice = product.price * (1 - selectedDuration.discount / 100);
+  const discountedPrice = product.price * selectedDuration.months * (1 - selectedDuration.discount / 100);
   const initials = product.name.slice(0, 2).toUpperCase();
   const accentColor = categoryColors[product.category] ?? "#ff7a4d";
 
@@ -70,7 +70,7 @@ export default function ProductPage() {
   };
 
   const waMsg = encodeURIComponent(
-    `Hi Bundly+! I'd like to order ${product.name} (${selectedDuration.label}) for $${discountedPrice.toFixed(2)}/mo.`
+    `Hi Bundly+! I'd like to order ${product.name} (${selectedDuration.label}) — Total: $${discountedPrice.toFixed(2)} USD.`
   );
 
   return (
@@ -158,7 +158,7 @@ export default function ProductPage() {
               <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/30">Duration</p>
               <div className="grid grid-cols-2 gap-2">
                 {DURATIONS.map((d, i) => {
-                  const price = product.price * (1 - d.discount / 100);
+                  const totalPrice = product.price * d.months * (1 - d.discount / 100);
                   return (
                     <button
                       key={d.label}
@@ -181,7 +181,7 @@ export default function ProductPage() {
                         )}
                       </div>
                       <div className={`mt-1 text-lg font-black ${duration === i ? "text-[#ff7a4d]" : "text-white/40"}`}>
-                        ${price.toFixed(2)}<span className="text-xs font-normal">/mo</span>
+                        ${totalPrice.toFixed(2)}<span className="text-xs font-normal opacity-60"> total</span>
                       </div>
                     </button>
                   );
@@ -192,10 +192,16 @@ export default function ProductPage() {
             <div className="mb-6 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-white/40">Total per month</p>
-                  <p className="text-3xl font-black text-white">${discountedPrice.toFixed(2)}<span className="text-sm text-white/40 font-normal">/mo</span></p>
+                  <p className="text-xs text-white/40">
+                    Total for {selectedDuration.months} month{selectedDuration.months > 1 ? "s" : ""}
+                  </p>
+                  <p className="text-3xl font-black text-white" data-testid="text-total-price">
+                    ${discountedPrice.toFixed(2)}<span className="text-sm text-white/40 font-normal"> USD</span>
+                  </p>
                   {selectedDuration.discount > 0 && (
-                    <p className="text-xs text-white/30 line-through">${product.price.toFixed(2)}/mo</p>
+                    <p className="text-xs text-white/30 line-through">
+                      ${(product.price * selectedDuration.months).toFixed(2)} full price
+                    </p>
                   )}
                 </div>
                 {selectedDuration.discount > 0 && (

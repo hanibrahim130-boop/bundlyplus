@@ -48,7 +48,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const glowY = useTransform(mouseY, [-0.5, 0.5], ["15%", "85%"]);
 
   const selectedDuration = DURATIONS[duration];
-  const discountedPrice = product.price * (1 - selectedDuration.discount / 100);
+  const discountedPrice = product.price * selectedDuration.months * (1 - selectedDuration.discount / 100);
   const initials = product.name.slice(0, 2).toUpperCase();
   const colors = categoryColors[product.category] ?? { bg: "bg-white/5", text: "text-white/50" };
   const accountType = product.account_type ?? "Shared";
