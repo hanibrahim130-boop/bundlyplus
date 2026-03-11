@@ -16,7 +16,7 @@ export default function AdminDashboard() {
 
   if (!verified) return null;
 
-  const categories = [...new Set(products.map((p) => p.category))];
+  const categories = Array.from(new Set(products.map((p) => p.category)));
   const hotCount = products.filter((p) => p.hot).length;
 
   const stats = [

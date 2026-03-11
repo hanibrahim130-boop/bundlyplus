@@ -164,7 +164,7 @@ export default function AdminProducts() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/products"] }),
   });
 
-  const categories = ["All", ...new Set(products.map((p) => p.category))];
+  const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
