@@ -28,6 +28,83 @@ const categoryColors: Record<string, { bg: string; text: string }> = {
   "Music & Others": { bg: "bg-[#1DB954]/15", text: "text-[#7ed9a8]" },
 };
 
+const SI = "https://cdn.simpleicons.org";
+const WIKI = "https://upload.wikimedia.org/wikipedia/commons";
+
+const LOGO_RULES: Array<[string, string]> = [
+  // Streaming — simpleicons confirmed working
+  ["netflix",          `${SI}/netflix`],
+  ["youtube",          `${SI}/youtube`],
+  ["disney",           `${WIKI}/3/3e/Disney%2B_logo.svg`],
+  ["paramount",        `${SI}/paramountplus`],
+  ["prime video",      `${WIKI}/1/11/Amazon_Prime_Video_logo.svg`],
+  ["amazon prime",     `${WIKI}/1/11/Amazon_Prime_Video_logo.svg`],
+  ["apple tv",         `${SI}/appletv/ffffff`],
+  ["max (hbo",         `${SI}/hbomax/ffffff`],
+  ["hbo max",          `${SI}/hbomax/ffffff`],
+  ["crunchyroll",      `${SI}/crunchyroll`],
+  ["peacock",          `${WIKI}/d/d3/NBCUniversal_Peacock_Logo.svg`],
+  ["dazn",             `${SI}/dazn`],
+  // MENA Streaming — Wikipedia URLs (load fine in browser)
+  ["osn",              `${WIKI}/8/87/OSN%2B_Logo.png`],
+  ["shahid",           `${WIKI}/4/41/Shahid_Logo.svg`],
+  ["anghami",          `${WIKI}/4/4c/Anghami_Logo_2021.png`],
+  ["starzplay",        `${WIKI}/e/e5/Starz_Play_Arabia_Logo.png`],
+  ["tod by bein",      `${WIKI}/a/a0/TOD_by_beIN.png`],
+  ["bein",             `${WIKI}/a/a0/TOD_by_beIN.png`],
+  ["jawwy",            `${WIKI}/b/b6/Jawwy_TV_logo.png`],
+  ["weyyak",           `${WIKI}/5/5d/Weyyak_logo.png`],
+  ["watchit",          `${WIKI}/0/07/Watchit_logo.png`],
+  // Music
+  ["spotify",          `${SI}/spotify`],
+  ["apple music",      `${SI}/applemusic`],
+  ["tidal",            `${SI}/tidal`],
+  // Gaming
+  ["xbox",             `${WIKI}/f/f9/Xbox_one_logo.svg`],
+  ["playstation",      `${SI}/playstation`],
+  ["steam",            `${SI}/steam/ffffff`],
+  ["roblox",           `${SI}/roblox`],
+  ["nintendo",         `${WIKI}/0/0d/Nintendo.svg`],
+  ["ea play",          `${SI}/ea`],
+  // VPN / Utilities
+  ["nordvpn",          `${SI}/nordvpn`],
+  ["expressvpn",       `${SI}/expressvpn`],
+  ["duolingo",         `${SI}/duolingo`],
+  // AI / Productivity — simpleicons confirmed working
+  ["chatgpt",          `${SI}/openai/ffffff`],
+  ["claude",           `${SI}/anthropic/ffffff`],
+  ["midjourney",       `${WIKI}/e/e6/Midjourney_Emblem.png`],
+  ["perplexity",       `${SI}/perplexity`],
+  ["gemini",           `${SI}/googlegemini`],
+  ["github copilot",   `${SI}/github/ffffff`],
+  ["grammarly",        `${SI}/grammarly`],
+  ["notion",           `${SI}/notion/ffffff`],
+  ["loom",             `${SI}/loom`],
+  // Design / Dev — simpleicons confirmed working
+  ["adobe",            `${WIKI}/4/4c/Adobe_Creative_Cloud_rainbow_icon.svg`],
+  ["figma",            `${SI}/figma`],
+  ["canva",            `${WIKI}/b/b9/2023_Canva_logo.svg`],
+  ["framer",           `${SI}/framer/ffffff`],
+  ["linear",           `${SI}/linear/ffffff`],
+  ["vercel",           `${SI}/vercel/ffffff`],
+  ["cursor",           `${SI}/cursor/ffffff`],
+  ["retool",           `${SI}/retool`],
+  ["slack",            `${SI}/slack`],
+  ["google workspace", `${WIKI}/a/a9/Google_Workspace_Logo.svg`],
+  ["microsoft copilot",`${WIKI}/e/e1/Microsoft_Copilot_logo_%282023%29.svg`],
+  ["copilot",          `${WIKI}/e/e1/Microsoft_Copilot_logo_%282023%29.svg`],
+  ["microsoft 365",    `${WIKI}/4/44/Microsoft_logo.svg`],
+];
+
+function getLogoUrl(name: string, imageUrl: string): string | null {
+  if (imageUrl) return imageUrl;
+  const n = name.toLowerCase();
+  for (const [keyword, url] of LOGO_RULES) {
+    if (n.includes(keyword)) return url;
+  }
+  return null;
+}
+
 export default function ProductCard({ product }: { product: Product }) {
   const addToCart = useCartStore((s) => s.addToCart);
   const [added, setAdded] = useState(false);
@@ -52,6 +129,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const initials = product.name.slice(0, 2).toUpperCase();
   const colors = categoryColors[product.category] ?? { bg: "bg-white/5", text: "text-white/50" };
   const accountType = product.account_type ?? "Shared";
+  const logoUrl = getLogoUrl(product.name, product.image_url);
+  const [logoError, setLogoError] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isTouch) return;
@@ -119,10 +198,11 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
 
         <div className="relative flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-white/[0.04] to-transparent min-h-[80px] sm:min-h-[100px]">
-          {product.image_url ? (
+          {logoUrl && !logoError ? (
             <img
-              src={product.image_url}
+              src={logoUrl}
               alt={product.name}
+              onError={() => setLogoError(true)}
               className="h-12 w-auto max-w-[130px] object-contain transition-transform duration-300 group-hover:scale-105"
             />
           ) : (

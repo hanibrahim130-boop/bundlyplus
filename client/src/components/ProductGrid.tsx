@@ -1,11 +1,13 @@
-import { useEffect, useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearch, useLocation } from "wouter";
+import { useQuery } from "@tanstack/react-query";
 import ProductCard, { type Product } from "./ProductCard";
 import { SlidersHorizontal, ChevronDown, X } from "lucide-react";
 
 const CATEGORIES = ["All", "Streaming", "Gaming", "Software & AI", "Music & Others"];
-const INITIAL_VISIBLE = 12;
+const INITIAL_VISIBLE = 9;
+const LOAD_MORE_STEP = 6;
 
 type SortKey = "default" | "price-asc" | "price-desc" | "name-asc";
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
@@ -20,9 +22,6 @@ export default function ProductGrid() {
   const searchString = useSearch();
   const urlQuery = new URLSearchParams(searchString).get("q") ?? "";
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortKey, setSortKey] = useState<SortKey>("default");
   const [showSortMenu, setShowSortMenu] = useState(false);
@@ -30,33 +29,9 @@ export default function ProductGrid() {
 
   const searchQuery = urlQuery;
 
-  useEffect(() => {
-    async function load() {
-      try {
-        setLoading(true);
-        const res = await fetch("/products.json");
-        if (!res.ok) throw new Error("Failed to fetch products");
-        setProducts(await res.json());
-        setError("");
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
-  }, []);
-
-  useEffect(() => {
-    if (urlQuery) {
-      setActiveCategory("All");
-    }
-    setVisibleCount(INITIAL_VISIBLE);
-  }, [urlQuery]);
-
-  useEffect(() => {
-    setVisibleCount(INITIAL_VISIBLE);
-  }, [activeCategory, sortKey]);
+  const { data: products = [], isLoading, isError } = useQuery<Product[]>({
+    queryKey: ["/api/products"],
+  });
 
   const filtered = useMemo(() => {
     let list = activeCategory === "All" ? [...products] : products.filter((p) => p.category === activeCategory);
@@ -66,7 +41,7 @@ export default function ProductGrid() {
         (p) =>
           p.name.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q)
+          (p.description ?? "").toLowerCase().includes(q)
       );
     }
     switch (sortKey) {
@@ -75,12 +50,12 @@ export default function ProductGrid() {
       case "name-asc": list.sort((a, b) => a.name.localeCompare(b.name)); break;
     }
     return list;
-  }, [products, activeCategory, sortKey, urlQuery]);
+  }, [products, activeCategory, sortKey, searchQuery]);
 
   const visible = filtered.slice(0, visibleCount);
   const remaining = filtered.length - visibleCount;
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="space-y-6">
         <div className="flex gap-2 overflow-x-auto pb-1">
@@ -97,7 +72,7 @@ export default function ProductGrid() {
     );
   }
 
-  if (error) return <p className="text-sm text-red-400">{error}</p>;
+  if (isError) return <p className="text-sm text-red-400 py-8 text-center">Failed to load products.</p>;
 
   const activeSort = SORT_OPTIONS.find((o) => o.key === sortKey)!;
 
@@ -111,7 +86,7 @@ export default function ProductGrid() {
             return (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => { setActiveCategory(cat); setVisibleCount(INITIAL_VISIBLE); }}
                 data-testid={`filter-${cat.replace(/[^a-z0-9]/gi, "-").toLowerCase()}`}
                 className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-all whitespace-nowrap ${
                   active
@@ -133,7 +108,7 @@ export default function ProductGrid() {
             className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-bold text-white/60 hover:border-white/25 hover:text-white transition-all whitespace-nowrap"
           >
             <SlidersHorizontal className="h-3.5 w-3.5" />
-            Filters
+            {activeSort.label}
             <ChevronDown className={`h-3 w-3 transition-transform ${showSortMenu ? "rotate-180" : ""}`} />
           </button>
           <AnimatePresence>
@@ -206,11 +181,11 @@ export default function ProductGrid() {
           {remaining > 0 && (
             <div className="flex justify-center pt-4">
               <button
-                onClick={() => setVisibleCount((v) => v + INITIAL_VISIBLE)}
+                onClick={() => setVisibleCount((v) => v + LOAD_MORE_STEP)}
                 data-testid="button-show-more"
                 className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-8 py-3 text-sm font-bold text-white/60 hover:border-[#ff7a4d]/40 hover:text-[#ff7a4d] transition-all"
               >
-                More ({remaining})
+                Show more
                 <ChevronDown className="h-4 w-4" />
               </button>
             </div>

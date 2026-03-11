@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, Lock, User, Eye, EyeOff, Loader2 } from "lucide-react";
 
@@ -55,7 +56,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(false);
   };
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -68,13 +69,14 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
             className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm"
           />
 
+          <div className="fixed inset-0 z-[201] flex items-center justify-center p-4">
           <motion.div
             key="modal"
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 30 }}
+            exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 top-1/2 z-[201] w-full max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)]"
+            className="w-full max-w-sm rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)]"
           >
             <button
               onClick={onClose}
@@ -177,8 +179,10 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               </button>
             </form>
           </motion.div>
+          </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

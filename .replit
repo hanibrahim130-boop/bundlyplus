@@ -16,6 +16,7 @@ PORT = "5000"
 deploymentTarget = "autoscale"
 run = ["node", "./dist/index.cjs"]
 build = ["npm", "run", "build"]
+publicDir = "dist/public"
 
 [workflows]
 runButton = "Project"
@@ -40,3 +41,39 @@ waitForPort = 5000
 
 [agent]
 integrations = ["github:1.0.0"]
+
+[userenv]
+
+[userenv.shared]
+FIREBASE_PROJECT_ID = "bundlyplus"
+FIREBASE_CLIENT_EMAIL = "firebase-adminsdk-fbsvc@bundlyplus.iam.gserviceaccount.com"
+FIREBASE_PRIVATE_KEY = """
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPlxbtE7g2ew7T
+kZcwygGtR5b8orpDrka1USm8Ywgt5NMKscSswl1qZ2bCw+kc6MRS/RMCdEIGzlqC
+Y8SBCeSlOwABNRbWlQHElz5ZkTZma0tYjfMOgz8PdpcAewaIWZWwkb4XXV+q48BY
+ymvYK/Z0eS96mLBPdd2uHoGgI+qbb8WRE1z2slB1mb5PCFSyYIf1coe0LjT3bzW5
+oJaigoX1+D+zqIPDK0U+V7bJEyeLF8dtxDxFpst772JjIzFYqz/qNhkylRvSk3H7
+jPnjh9KhghaxfZeF7oqpZ5TozIedW35Z3ZLPRL3DnNU1XK0xPCxSrpdWh+EZxRKK
+/iLDAGXTAgMBAAECggEAAwZlnCDMb2bNqYGWnWxkJ91CMv5ADppsh1nebNNYnCqY
+dLBweEAA0nsdQTtPm089BSSQ8Vk2WRkKspm3lFXLkijQ8DOQ2KGlO/MkQnPeQhHQ
+MEMpRo3dDmGhA63HQ5dimgcVqQuASGI3PFP+zFCfr8TQT04IS7AhAdeJ9gZv9cHd
+eo1Zff8d/RLkFe0uX36g7AkpUrrBofIpdvs+UYnLTtM9xWQjy9vQgbGhRWdRCKun
+aCB1adBOHktgbAOXjFnjKbsqkCbVmToACiIFi1m7nHGVGA8TA8a9ireVBbNe5Krl
+RCB0Dk5E3TJQBMKd4WvyGvC+5R3g4fbJJqixgNWZ8QKBgQDw1XdYW7k2eEc2qcvZ
+yhi9GXz7zCs8sslRdk+lSmCTCPVtTTtSSgXlriFD5+2tz6hGWzARc8owwY4AK8Om
+XDwWKVnqtdPHiXZcbVbPY02P9aho2wp7uLOhGaS+xxTrE8rE9n2kEoZFkVLODIpS
+kKMiy5411W4goizoH8zCTjVLiQKBgQDcqbH8vR8roWi8gLVL0LDC6ESHYOL5JvK3
+MKFH/LFnXfx/IY7rPb2I+g+Wyni5zXq9+0scANkjR4ROz6ERTQEemNSY0rJiegI0
+4hlNP9F1Sa/8NUx84WaFc5TMrHfr36uMWP7YSNqSEuDjwXJ721miFfs/f0juWR/G
+T+RmNk6DewKBgQDAJZBSrtvW2Z/3vQEngla6iNtvCjZ09zAoDnz9I5pptXwa+MOb
+o/OQjJ190E2Rn1xixd5UDk4DGGpzOHehA3XtOJDE8s1FJieJFrNsQ45ejWEQR7LV
+g0fOAOewTqYh6GifPQqBHUaDuq6WNusldMCzwkE4MlDrOHkbukNjw4JCAQKBgQDE
+EEekkIn8o2tDan0sAx6739LcEvs5dCDfImd7ZgxfEwSCFVg+rtoUtlNZoUeJmAjC
+e2DuXdaRYT8vI48ypyAihpsHutZjZ5NEV80xdU3wD+w9hUIUB9anJt6EyY24WEG9
+72lo1brXZczKsZy+blUDDtLyRW+Q0EHKXDxNkV1LtwKBgAGYeS6X9sddpjiWM5FX
+omKceCYZvDfCZo8wgvZHGqic/fp7PEyF2EGEUL0QHTdMdf+ezVX11j0kWnBseyJQ
+Ny+8AxMcrW3/grkRpDeAztlvwlsn+W0c54z68jI09pucbhvGSmUjqEaK2ehCCdsl
+6HcesksgVEyYs+9bfYHrUUjr
+-----END PRIVATE KEY-----
+"""

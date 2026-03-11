@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import ProductGrid from "./ProductGrid";
 
 const BUNDLE_TIERS = [
   { label: "Starter Bundle", save: 25, color: "#39efd0" },
@@ -173,23 +172,6 @@ export default function FeatureBento() {
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="w-full min-w-0 rounded-none sm:rounded-2xl border-0 sm:border sm:border-white/[0.08] bg-transparent sm:bg-white/[0.02] p-0 sm:p-6 md:p-10 lg:p-14"
-          >
-            <div className="mb-8">
-              <span className="mb-3 inline-block rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#ff7a4d]">
-                Marketplace
-              </span>
-              <h3 style={{ fontFamily: "var(--font-syne)" }} className="text-3xl font-bold uppercase tracking-tight text-white md:text-4xl">
-                Browse deals
-              </h3>
-            </div>
-            <ProductGrid />
-          </motion.div>
         </div>
       </div>
     </section>
