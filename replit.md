@@ -43,8 +43,20 @@ client/src/
     cartStore.ts          - Zustand cart store (localStorage: "bundlyplus-cart")
 
 server/
-  storage.ts    - In-memory storage with 41 seed products
-  routes.ts     - GET /api/products, GET /api/products/:id, POST /api/checkout_sessions
+  db.ts         - PostgreSQL connection via drizzle-orm/node-postgres
+  storage.ts    - DB-backed CRUD storage (DbStorage) with 41 seeded products
+  routes.ts     - Public API + admin API (JWT-protected CRUD)
+
+shared/
+  schema.ts     - Drizzle schema: users, products, site_settings tables
+
+client/src/pages/admin/
+  AdminLogin.tsx     - /admin/login — password auth (default: admin123)
+  AdminDashboard.tsx - /admin — stats dashboard
+  AdminProducts.tsx  - /admin/products — full CRUD product manager
+  AdminSettings.tsx  - /admin/settings — hero, WhatsApp, password settings
+  AdminLayout.tsx    - Sidebar layout shared by all admin pages
+  useAdminAuth.ts    - JWT auth hook + adminFetch helper
 ```
 
 ## Key Features
