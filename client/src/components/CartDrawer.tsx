@@ -1,5 +1,5 @@
 import { useCartStore } from "../store/cartStore";
-import { ShoppingCart, X, Plus, Minus, Trash2 } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
 import PaymentMethods from "./PaymentMethods";
 
@@ -64,15 +64,23 @@ export default function CartDrawer() {
         style={{ transition: "transform 300ms cubic-bezier(0.16,1,0.3,1)" }}
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-            <h2 style={{ fontFamily: "var(--font-syne)" }} className="text-lg font-bold text-white">Cart ({count})</h2>
+          <div className="flex items-center gap-3 border-b border-white/10 px-4 py-4">
             <button
               onClick={() => setOpen(false)}
               data-testid="button-close-cart"
-              className="text-slate-400 hover:text-white transition-colors"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/60 hover:border-white/25 hover:bg-white/10 hover:text-white transition-all"
+              aria-label="Back"
             >
-              <X size={20} />
+              <ArrowLeft size={16} />
             </button>
+            <h2 style={{ fontFamily: "var(--font-syne)" }} className="flex-1 text-lg font-bold text-white">
+              Cart {count > 0 && <span className="text-[#ff7a4d]">({count})</span>}
+            </h2>
+            {count > 0 && (
+              <span className="rounded-full bg-[#ff7a4d]/15 px-2.5 py-1 text-[11px] font-bold text-[#ff7a4d]">
+                {count} item{count !== 1 ? "s" : ""}
+              </span>
+            )}
           </div>
 
           <div className="flex-1 overflow-y-auto px-5 py-4">
