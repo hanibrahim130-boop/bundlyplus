@@ -1,10 +1,9 @@
-import { db } from "./db";
 import { firestore } from "./firebase";
-import { siteSettings, type Product, type InsertProduct } from "@shared/schema";
-import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
+import type { Product, InsertProduct } from "@shared/schema";
 
 const PRODUCTS_COLLECTION = "products";
+const SETTINGS_DOC = "settings/site";
 
 const DEFAULT_SETTINGS: Record<string, string> = {
   site_name: "Bundly+",
@@ -43,8 +42,19 @@ export interface IStorage {
 
 export class DbStorage implements IStorage {
   async initialize() {
-    for (const [key, value] of Object.entries(DEFAULT_SETTINGS)) {
-      await db.insert(siteSettings).values({ key, value }).onConflictDoNothing();
+    const ref = firestore.doc(SETTINGS_DOC);
+    const snap = await ref.get();
+    if (!snap.exists) {
+      await ref.set(DEFAULT_SETTINGS);
+    } else {
+      const existing = snap.data() || {};
+      const missing: Record<string, string> = {};
+      for (const [k, v] of Object.entries(DEFAULT_SETTINGS)) {
+        if (!(k in existing)) missing[k] = v;
+      }
+      if (Object.keys(missing).length > 0) {
+        await ref.set(missing, { merge: true });
+      }
     }
   }
 
@@ -110,19 +120,19 @@ export class DbStorage implements IStorage {
   }
 
   async getSettings(): Promise<Record<string, string>> {
-    const rows = await db.select().from(siteSettings);
-    return Object.fromEntries(rows.map((r) => [r.key, r.value]));
+    const snap = await firestore.doc(SETTINGS_DOC).get();
+    if (!snap.exists) return { ...DEFAULT_SETTINGS };
+    return (snap.data() || {}) as Record<string, string>;
   }
 
   async getSetting(key: string): Promise<string | undefined> {
-    const rows = await db.select().from(siteSettings).where(eq(siteSettings.key, key));
-    return rows[0]?.value;
+    const snap = await firestore.doc(SETTINGS_DOC).get();
+    const data = snap.data() || {};
+    return (data[key] as string) ?? DEFAULT_SETTINGS[key];
   }
 
   async updateSettings(settings: Record<string, string>): Promise<void> {
-    for (const [key, value] of Object.entries(settings)) {
-      await db.insert(siteSettings).values({ key, value }).onConflictDoUpdate({ target: siteSettings.key, set: { value } });
-    }
+    await firestore.doc(SETTINGS_DOC).set(settings, { merge: true });
   }
 }
 
