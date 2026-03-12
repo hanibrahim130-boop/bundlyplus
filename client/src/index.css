@@ -138,9 +138,9 @@ body {
   border-radius: 50%;
   width: 380px; height: 380px;
   left: 68%; top: 20%;
-  background: #2bfdc8;
+  background: #fb7246;
   filter: blur(120px);
-  opacity: 0.06;
+  opacity: 0.04;
   will-change: transform;
   animation: orb-float-2 19s ease-in-out infinite;
   pointer-events: none;

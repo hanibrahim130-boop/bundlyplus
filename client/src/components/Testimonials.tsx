@@ -66,7 +66,7 @@ export default function Testimonials() {
 
   return (
     <section ref={sectionRef} className="relative bg-[#050505] py-24 md:py-36" style={{ overflowX: "hidden" }}>
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2bfdc8]/5 blur-[140px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#fb7246]/4 blur-[140px]" />
 
       <div className="mx-auto max-w-[1400px] px-2 sm:px-6 md:px-10 lg:px-14">
         <div style={{ perspective: "1000px" }}>

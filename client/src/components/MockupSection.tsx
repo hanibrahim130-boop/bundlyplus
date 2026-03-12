@@ -52,7 +52,7 @@ export default function MockupSection() {
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="pointer-events-none absolute bottom-1/4 left-1/3 h-[400px] w-[400px] rounded-full bg-[#2bfdc8]/8 blur-[140px]"
+        className="pointer-events-none absolute bottom-1/4 left-1/3 h-[400px] w-[400px] rounded-full bg-[#fb7246]/5 blur-[140px]"
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, delay: 2 }}
       />
