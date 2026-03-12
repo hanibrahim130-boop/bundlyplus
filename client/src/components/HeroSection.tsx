@@ -134,7 +134,7 @@ export default function HeroSection() {
   const scrollToSubscriptions = () => document.querySelector("#subscriptions")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section ref={sectionRef} className="relative bg-[#1f2626] flex flex-col" style={{ minHeight: "100svh", overflowX: "hidden" }} data-testid="section-hero">
+    <section ref={sectionRef} className="relative bg-[#050505] flex flex-col" style={{ minHeight: "100svh", overflowX: "hidden" }} data-testid="section-hero">
       <HeroBackground />
 
       <div className="relative z-10 flex flex-1 items-center">
@@ -264,7 +264,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 overflow-hidden border-t border-white/[0.04] bg-[#233b35]">
+      <div className="relative z-10 overflow-hidden border-t border-white/[0.04] bg-[#0a0a0a]">
         <motion.div
           className="flex gap-7 py-2.5"
           animate={{ x: ["0%", "-50%"] }}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, Lock, User, Eye, EyeOff, Loader2 } from "lucide-react";
-import brandIcon from "@assets/5879503881551678599_1773279399063.jpg";
+import brandIcon from "@assets/bundly-icon-logo.png";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -71,7 +71,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               </button>
 
               <div className="mb-6 flex items-center gap-3">
-                <img src={brandIcon} alt="Bundly+" className="h-10 w-10 rounded-lg object-contain" style={{ mixBlendMode: 'lighten' }} />
+                <img src={brandIcon} alt="Bundly+" className="h-12 w-12 object-contain" />
                 <div>
                   <h2 style={{ fontFamily: "var(--font-syne)" }} className="text-lg font-bold uppercase tracking-tight text-white">
                     {mode === "login" ? "Welcome back" : "Join Bundly+"}

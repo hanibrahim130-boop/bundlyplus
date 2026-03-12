@@ -45,7 +45,7 @@ export default function MockupSection() {
   const handleLeave = () => { rx.set(0); ry.set(0); };
 
   return (
-    <section ref={sectionRef} className="relative bg-[#1f2626] py-32 md:py-48" style={{ overflowX: "hidden" }}>
+    <section ref={sectionRef} className="relative bg-[#050505] py-32 md:py-48" style={{ overflowX: "hidden" }}>
       <motion.div
         className="pointer-events-none absolute top-1/4 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#fb7246]/10 blur-[160px]"
         animate={{ scale: [1, 1.15, 1] }}
@@ -139,11 +139,11 @@ export default function MockupSection() {
               onMouseLeave={handleLeave}
               className="relative z-10"
             >
-              <div className="relative h-[540px] w-[270px] rounded-[46px] border-2 border-white/20 bg-gradient-to-b from-[#111] to-[#1f2626] shadow-[0_40px_120px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)]">
+              <div className="relative h-[540px] w-[270px] rounded-[46px] border-2 border-white/20 bg-gradient-to-b from-[#111] to-[#050505] shadow-[0_40px_120px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)]">
                 <div className="absolute left-1/2 top-3 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
 
                 <div className="flex h-full flex-col overflow-hidden rounded-[44px] p-3">
-                  <div className="flex-1 overflow-hidden rounded-[38px] bg-[#233b35]">
+                  <div className="flex-1 overflow-hidden rounded-[38px] bg-[#0a0a0a]">
                     <div className="flex h-12 items-center justify-between px-4">
                       <span className="text-xs font-bold text-white">9:41</span>
                       <div className="flex gap-1">

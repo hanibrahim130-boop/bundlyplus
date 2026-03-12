@@ -4,8 +4,7 @@ import { ShoppingBag, User, Search, X, Menu } from "lucide-react";
 import AuthModal from "./AuthModal";
 import { useCartStore } from "../store/cartStore";
 import { useLocation } from "wouter";
-import brandIcon from "@assets/5879503881551678599_1773279399063.jpg";
-import brandFull from "@assets/5879503881551678600_1773279399060.jpg";
+import brandFull from "@assets/bundly-full-logo.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "#" },
@@ -89,7 +88,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group shrink-0"
           data-testid="link-logo"
         >
-          <img src={brandFull} alt="Bundly Plus" className="h-10 sm:h-11 w-auto object-contain" style={{ mixBlendMode: 'lighten' }} />
+          <img src={brandFull} alt="Bundly Plus" className="h-14 sm:h-16 w-auto object-contain" />
         </button>
 
         <div className="hidden md:flex items-center gap-8">

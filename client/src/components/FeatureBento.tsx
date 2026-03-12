@@ -40,7 +40,7 @@ export default function FeatureBento() {
     <section
       id="features"
       ref={sectionRef}
-      className="relative bg-[#1f2626] py-16 md:py-32 lg:py-44"
+      className="relative bg-[#050505] py-16 md:py-32 lg:py-44"
       style={{ overflowX: "hidden" }}
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
