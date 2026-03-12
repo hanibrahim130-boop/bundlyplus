@@ -2,9 +2,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const BUNDLE_TIERS = [
-  { label: "Starter Bundle", save: 25, color: "#39efd0" },
-  { label: "Popular Bundle", save: 40, color: "#ff7a4d" },
-  { label: "Ultimate Bundle", save: 50, color: "#ffd700" },
+  { label: "Starter Bundle", save: 50, color: "#39efd0" },
+  { label: "Popular Bundle", save: 120, color: "#ff7a4d" },
+  { label: "Ultimate Bundle", save: 200, color: "#ffd700" },
 ];
 
 const FEATURE_CARDS = [
@@ -66,7 +66,7 @@ export default function FeatureBento() {
             >
               <div className="absolute right-3 top-3 sm:right-6 sm:top-6 flex flex-col items-end gap-1">
                 <span className="text-xs uppercase tracking-widest text-white/30">Max Savings</span>
-                <span style={{ fontFamily: "var(--font-syne)" }} className="text-5xl font-bold text-[#ffd700]">50%</span>
+                <span style={{ fontFamily: "var(--font-syne)" }} className="text-5xl font-bold text-[#ffd700]">200%</span>
               </div>
 
               <div className="mt-16 space-y-4">
@@ -87,7 +87,7 @@ export default function FeatureBento() {
                         className="h-full rounded-full"
                         style={{ background: `linear-gradient(90deg, ${color}80, ${color})` }}
                         initial={{ width: 0 }}
-                        whileInView={{ width: `${save}%` }}
+                        whileInView={{ width: `${(save / 200) * 100}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, delay: 0.4 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                       />
