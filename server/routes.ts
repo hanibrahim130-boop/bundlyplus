@@ -36,7 +36,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/products/:id", async (req, res) => {
     try {
-      const product = await storage.getProduct(req.params.id);
+      const product = await storage.getProduct(String(req.params.id));
       if (!product) return res.status(404).json({ error: "Product not found" });
       res.json(product);
     } catch {
@@ -94,7 +94,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     try {
       const partial = insertProductSchema.partial().safeParse(req.body);
       if (!partial.success) return res.status(400).json({ error: partial.error.issues });
-      const product = await storage.updateProduct(req.params.id, partial.data);
+      const product = await storage.updateProduct(String(req.params.id), partial.data);
       if (!product) return res.status(404).json({ error: "Product not found" });
       res.json(product);
     } catch {
@@ -104,7 +104,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.delete("/api/admin/products/:id", adminAuth, async (req, res) => {
     try {
-      const ok = await storage.deleteProduct(req.params.id);
+      const ok = await storage.deleteProduct(String(req.params.id));
       if (!ok) return res.status(404).json({ error: "Product not found" });
       res.json({ success: true });
     } catch {
