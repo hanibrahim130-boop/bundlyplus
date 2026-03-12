@@ -7,7 +7,7 @@ const REVIEWS = [
     initials: "LH",
     name: "Layla Hassan",
     role: "Digital Creator",
-    color: "#ff7a4d",
+    color: "#fb7246",
     text: "Bundly+ saves me $180/month on subscriptions. The bundles are perfectly curated and delivery is instant!",
     stars: 5,
   },
@@ -15,7 +15,7 @@ const REVIEWS = [
     initials: "KK",
     name: "Karim Khalil",
     role: "Software Developer",
-    color: "#39efd0",
+    color: "#2bfdc8",
     text: "Finally, a one-stop shop for all my subscriptions. ChatGPT, Adobe, and Spotify in one place. Game changer.",
     stars: 5,
   },
@@ -31,7 +31,7 @@ const REVIEWS = [
     initials: "JT",
     name: "Joe Tannous",
     role: "Entrepreneur",
-    color: "#ff7a4d",
+    color: "#fb7246",
     text: "The WhatsApp checkout is so simple. Placed my order and received credentials in under 5 minutes. Brilliant.",
     stars: 5,
   },
@@ -39,7 +39,7 @@ const REVIEWS = [
     initials: "SR",
     name: "Sara Rizk",
     role: "Student",
-    color: "#39efd0",
+    color: "#2bfdc8",
     text: "As a student on a budget, Bundly+ is a lifesaver. Netflix and Spotify for under $7 combined? Unreal.",
     stars: 5,
   },
@@ -65,8 +65,8 @@ export default function Testimonials() {
   const stripRight = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#050505] py-24 md:py-36" style={{ overflowX: "hidden" }}>
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39efd0]/5 blur-[140px]" />
+    <section ref={sectionRef} className="relative bg-[#1f2626] py-24 md:py-36" style={{ overflowX: "hidden" }}>
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2bfdc8]/5 blur-[140px]" />
 
       <div className="mx-auto max-w-[1400px] px-2 sm:px-6 md:px-10 lg:px-14">
         <div style={{ perspective: "1000px" }}>
@@ -75,7 +75,7 @@ export default function Testimonials() {
             className="mb-14 text-center"
             >
             <div style={{ transformOrigin: "top center" }}>
-              <span className="mb-4 inline-block rounded-full border border-[#39efd0]/30 bg-[#39efd0]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#39efd0]">
+              <span className="mb-4 inline-block rounded-full border border-[#2bfdc8]/30 bg-[#2bfdc8]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#2bfdc8]">
                 Customer Love
               </span>
               <h2
@@ -83,7 +83,7 @@ export default function Testimonials() {
                 className="text-4xl font-bold uppercase leading-[0.9] tracking-tight text-white md:text-6xl"
               >
                 Trusted by <br />
-                <span className="text-[#39efd0]">thousands</span>
+                <span className="text-[#2bfdc8]">thousands</span>
               </h2>
               <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-white/45">
                 Real stories from real users who switched to smarter subscriptions.

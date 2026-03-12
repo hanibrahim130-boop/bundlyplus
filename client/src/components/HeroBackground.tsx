@@ -185,10 +185,10 @@ export default function HeroBackground() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 55% 60% at 50% 50%, transparent 40%, #050505 100%)",
+          background: "radial-gradient(ellipse 55% 60% at 50% 50%, transparent 40%, #1f2626 100%)",
         }}
       />
-      <div className="absolute inset-x-0 bottom-0 h-48 pointer-events-none bg-gradient-to-t from-[#050505] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-48 pointer-events-none bg-gradient-to-t from-[#1f2626] to-transparent" />
     </div>
   );
 }

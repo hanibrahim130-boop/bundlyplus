@@ -9,7 +9,7 @@ const plans = [
     id: "starter",
     name: "Starter",
     icon: Zap,
-    color: "#39efd0",
+    color: "#2bfdc8",
     colorBg: "rgba(57,239,208,0.08)",
     colorBorder: "rgba(57,239,208,0.2)",
     subs: 2,
@@ -24,7 +24,7 @@ const plans = [
     id: "popular",
     name: "Popular",
     icon: Star,
-    color: "#ff7a4d",
+    color: "#fb7246",
     colorBg: "rgba(255,122,77,0.08)",
     colorBorder: "rgba(255,122,77,0.3)",
     subs: 4,
@@ -93,7 +93,7 @@ function PlanCard({ plan, selected, onSelect, delay }: {
         onClick={onSelect}
         className={`relative w-full flex flex-col rounded-2xl border bg-white/[0.02] backdrop-blur-xl overflow-hidden cursor-pointer transition-all duration-300 ${
           plan.popular
-            ? "border-[#ff7a4d]/40 shadow-[0_0_60px_rgba(255,122,77,0.12)]"
+            ? "border-[#fb7246]/40 shadow-[0_0_60px_rgba(255,122,77,0.12)]"
             : selected
             ? "border-white/20"
             : "border-white/[0.08] hover:border-white/15"
@@ -101,11 +101,11 @@ function PlanCard({ plan, selected, onSelect, delay }: {
         data-testid={`card-bundle-${plan.id}`}
       >
         {plan.popular && (
-          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#ff7a4d]/60 to-transparent" />
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#fb7246]/60 to-transparent" />
         )}
         {plan.popular && (
           <div className="absolute -top-px left-1/2 -translate-x-1/2">
-            <div className="rounded-b-full bg-[#ff7a4d] px-5 py-1 text-[10px] font-bold uppercase tracking-widest text-black">
+            <div className="rounded-b-full bg-[#fb7246] px-5 py-1 text-[10px] font-bold uppercase tracking-widest text-black">
               Most Popular
             </div>
           </div>
@@ -161,7 +161,7 @@ function PlanCard({ plan, selected, onSelect, delay }: {
             data-testid={`button-bundle-${plan.id}`}
             className={`w-full rounded-xl py-3.5 text-sm font-bold uppercase tracking-wider transition-all duration-200 text-center block ${
               plan.popular
-                ? "bg-[#ff7a4d] text-black shadow-[0_0_30px_rgba(255,122,77,0.3)] hover:shadow-[0_0_50px_rgba(255,122,77,0.5)] hover:opacity-90"
+                ? "bg-[#fb7246] text-black shadow-[0_0_30px_rgba(255,122,77,0.3)] hover:shadow-[0_0_50px_rgba(255,122,77,0.5)] hover:opacity-90"
                 : "border border-white/15 bg-white/[0.05] text-white hover:bg-white/10"
             }`}
           >
@@ -185,7 +185,7 @@ export default function SubscriptionSection() {
   const selectedPlan = plans.find((p) => p.id === selected)!;
 
   return (
-    <section ref={sectionRef} id="subscriptions" className="relative bg-[#050505] py-24 md:py-36" style={{ overflowX: "hidden" }}>
+    <section ref={sectionRef} id="subscriptions" className="relative bg-[#1f2626] py-24 md:py-36" style={{ overflowX: "hidden" }}>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -195,7 +195,7 @@ export default function SubscriptionSection() {
           backgroundSize: "60px 60px",
         }}
       />
-      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#ff7a4d]/5 blur-[110px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#fb7246]/5 blur-[110px]" />
 
       <div className="mx-auto max-w-[1200px] px-2 sm:px-6 md:px-10 lg:px-14">
         <div style={{ perspective: "1000px" }}>
@@ -204,7 +204,7 @@ export default function SubscriptionSection() {
             className="mb-14 text-center"
           >
             <div style={{ transformOrigin: "top center" }}>
-              <span className="mb-4 inline-block rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#ff7a4d]">
+              <span className="mb-4 inline-block rounded-full border border-[#fb7246]/30 bg-[#fb7246]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#fb7246]">
                 ⚡ Smart Bundles
               </span>
               <h2
@@ -212,7 +212,7 @@ export default function SubscriptionSection() {
                 className="text-4xl font-bold uppercase leading-[0.9] tracking-tight text-white md:text-6xl"
               >
                 Pick your <br />
-                <span className="text-[#ff7a4d]">bundle</span>
+                <span className="text-[#fb7246]">bundle</span>
               </h2>
               <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-white/45">
                 Combine your favourite subscriptions and unlock exclusive discounts. The more you bundle, the more you save.
@@ -240,7 +240,7 @@ export default function SubscriptionSection() {
             animate={{ opacity: 1, y: 0 }}
             className="mt-8 text-center text-sm text-white/30"
           >
-            You selected: <span className="text-white/60">{selectedPlan.name} Bundle ({selectedPlan.subs} subscriptions)</span> for <span className="text-[#ff7a4d] font-bold">${selectedPlan.price}/month</span>
+            You selected: <span className="text-white/60">{selectedPlan.name} Bundle ({selectedPlan.subs} subscriptions)</span> for <span className="text-[#fb7246] font-bold">${selectedPlan.price}/month</span>
             {" — "}Save ${((selectedPlan.wasPrice - selectedPlan.price)).toFixed(2)} per month compared to individual subscriptions
           </motion.p>
         )}

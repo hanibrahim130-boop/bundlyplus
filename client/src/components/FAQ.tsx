@@ -33,8 +33,8 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-[#050505] py-28 md:py-40" style={{ overflowX: "hidden" }}>
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff7a4d]/4 blur-[160px]" />
+    <section className="relative bg-[#1f2626] py-28 md:py-40" style={{ overflowX: "hidden" }}>
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#fb7246]/4 blur-[160px]" />
 
       <div className="mx-auto max-w-[900px] px-2 sm:px-6 md:px-10">
         <motion.div
@@ -52,7 +52,7 @@ export default function FAQ() {
             className="text-5xl font-bold uppercase leading-[0.9] tracking-tight text-white md:text-7xl"
           >
             Got <br />
-            <span className="text-[#ff7a4d]">questions?</span>
+            <span className="text-[#fb7246]">questions?</span>
           </h2>
         </motion.div>
 
@@ -67,7 +67,7 @@ export default function FAQ() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  isOpen ? "border-[#ff7a4d]/30 bg-[#ff7a4d]/[0.04]" : "border-white/[0.08] bg-white/[0.02]"
+                  isOpen ? "border-[#fb7246]/30 bg-[#fb7246]/[0.04]" : "border-white/[0.08] bg-white/[0.02]"
                 }`}
                 data-testid={`faq-item-${i}`}
               >
@@ -79,7 +79,7 @@ export default function FAQ() {
                   <div className="flex items-center gap-4">
                     <span
                       style={{ fontFamily: "var(--font-syne)" }}
-                      className={`text-sm font-bold tabular-nums ${isOpen ? "text-[#ff7a4d]" : "text-white/30"}`}
+                      className={`text-sm font-bold tabular-nums ${isOpen ? "text-[#fb7246]" : "text-white/30"}`}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -87,7 +87,7 @@ export default function FAQ() {
                       {faq.q}
                     </span>
                   </div>
-                  <div className={`shrink-0 rounded-full border p-1.5 transition-all ${isOpen ? "border-[#ff7a4d]/40 bg-[#ff7a4d]/10 text-[#ff7a4d]" : "border-white/10 text-white/30"}`}>
+                  <div className={`shrink-0 rounded-full border p-1.5 transition-all ${isOpen ? "border-[#fb7246]/40 bg-[#fb7246]/10 text-[#fb7246]" : "border-white/10 text-white/30"}`}>
                     {isOpen ? <Minus className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
                   </div>
                 </button>

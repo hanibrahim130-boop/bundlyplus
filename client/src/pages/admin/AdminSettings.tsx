@@ -5,7 +5,7 @@ import { Save, Eye, EyeOff } from "lucide-react";
 import AdminLayout from "./AdminLayout";
 import { useAdminAuth, adminFetch } from "./useAdminAuth";
 
-const INPUT = "w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#ff7a4d]/60 focus:ring-1 focus:ring-[#ff7a4d]/20 transition";
+const INPUT = "w-full bg-[#233b35] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#fb7246]/60 focus:ring-1 focus:ring-[#fb7246]/20 transition";
 
 function Section({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -98,7 +98,7 @@ export default function AdminSettings() {
     <AdminLayout title="Settings">
       <div className="max-w-2xl space-y-6">
         {saved && (
-          <div className="bg-[#39efd0]/10 border border-[#39efd0]/20 text-[#39efd0] text-sm rounded-xl px-4 py-3 flex items-center gap-2">
+          <div className="bg-[#2bfdc8]/10 border border-[#2bfdc8]/20 text-[#2bfdc8] text-sm rounded-xl px-4 py-3 flex items-center gap-2">
             ✓ Settings saved successfully
           </div>
         )}
@@ -128,7 +128,7 @@ export default function AdminSettings() {
             </Field>
           </Section>
           <div className="mt-4">
-            <button type="submit" disabled={saveMutation.isPending} data-testid="button-save-settings" className="flex items-center gap-2 bg-[#ff7a4d] hover:bg-orange-500 disabled:opacity-50 text-white font-semibold px-6 py-3 rounded-xl text-sm transition">
+            <button type="submit" disabled={saveMutation.isPending} data-testid="button-save-settings" className="flex items-center gap-2 bg-[#fb7246] hover:bg-orange-500 disabled:opacity-50 text-white font-semibold px-6 py-3 rounded-xl text-sm transition">
               <Save size={15} /> {saveMutation.isPending ? "Saving…" : "Save Changes"}
             </button>
           </div>

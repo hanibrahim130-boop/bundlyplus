@@ -17,7 +17,7 @@ function Badge({ icon: Icon, label, className, delay }: {
       animate={{ y: [0, -6, 6, 0] }}
       className={`absolute z-20 flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] ${className ?? ""}`}
     >
-      <Icon className="h-4 w-4 text-[#ff7a4d]" />
+      <Icon className="h-4 w-4 text-[#fb7246]" />
       <span className="text-[11px] font-medium text-white/70">{label}</span>
     </motion.div>
   );
@@ -45,14 +45,14 @@ export default function MockupSection() {
   const handleLeave = () => { rx.set(0); ry.set(0); };
 
   return (
-    <section ref={sectionRef} className="relative bg-[#050505] py-32 md:py-48" style={{ overflowX: "hidden" }}>
+    <section ref={sectionRef} className="relative bg-[#1f2626] py-32 md:py-48" style={{ overflowX: "hidden" }}>
       <motion.div
-        className="pointer-events-none absolute top-1/4 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#ff7a4d]/10 blur-[160px]"
+        className="pointer-events-none absolute top-1/4 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#fb7246]/10 blur-[160px]"
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="pointer-events-none absolute bottom-1/4 left-1/3 h-[400px] w-[400px] rounded-full bg-[#39efd0]/8 blur-[140px]"
+        className="pointer-events-none absolute bottom-1/4 left-1/3 h-[400px] w-[400px] rounded-full bg-[#2bfdc8]/8 blur-[140px]"
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, delay: 2 }}
       />
@@ -64,7 +64,7 @@ export default function MockupSection() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="mb-4 inline-block rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#ff7a4d]"
+              className="mb-4 inline-block rounded-full border border-[#fb7246]/30 bg-[#fb7246]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#fb7246]"
             >
               Mobile Experience
             </motion.span>
@@ -77,7 +77,7 @@ export default function MockupSection() {
               style={{ fontFamily: "var(--font-syne)" }}
               className="text-5xl font-bold uppercase leading-[0.9] tracking-tight text-white md:text-6xl lg:text-7xl"
             >
-              Commerce <br />in your <br /><span className="text-[#39efd0]">pocket</span>
+              Commerce <br />in your <br /><span className="text-[#2bfdc8]">pocket</span>
             </motion.h2>
 
             <motion.p
@@ -94,8 +94,8 @@ export default function MockupSection() {
             <div className="mt-10 grid grid-cols-2 gap-4">
               {[
                 { label: "WhatsApp Checkout", color: "#25d366" },
-                { label: "Whish / OMT / USDT", color: "#ff7a4d" },
-                { label: "Order Alerts", color: "#39efd0" },
+                { label: "Whish / OMT / USDT", color: "#fb7246" },
+                { label: "Order Alerts", color: "#2bfdc8" },
                 { label: "No Card Needed", color: "#ffd700" },
               ].map(({ label, color }) => (
                 <motion.div
@@ -131,7 +131,7 @@ export default function MockupSection() {
           </div>
 
           <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full bg-[#ff7a4d]/5 blur-[100px]" />
+            <div className="absolute inset-0 rounded-full bg-[#fb7246]/5 blur-[100px]" />
 
             <motion.div
               style={{ y: phoneY, rotateX: srx, rotateY: sry, transformPerspective: 1000 }}
@@ -139,11 +139,11 @@ export default function MockupSection() {
               onMouseLeave={handleLeave}
               className="relative z-10"
             >
-              <div className="relative h-[540px] w-[270px] rounded-[46px] border-2 border-white/20 bg-gradient-to-b from-[#111] to-[#050505] shadow-[0_40px_120px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)]">
+              <div className="relative h-[540px] w-[270px] rounded-[46px] border-2 border-white/20 bg-gradient-to-b from-[#111] to-[#1f2626] shadow-[0_40px_120px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)]">
                 <div className="absolute left-1/2 top-3 h-1 w-16 -translate-x-1/2 rounded-full bg-white/20" />
 
                 <div className="flex h-full flex-col overflow-hidden rounded-[44px] p-3">
-                  <div className="flex-1 overflow-hidden rounded-[38px] bg-[#0a0a0a]">
+                  <div className="flex-1 overflow-hidden rounded-[38px] bg-[#233b35]">
                     <div className="flex h-12 items-center justify-between px-4">
                       <span className="text-xs font-bold text-white">9:41</span>
                       <div className="flex gap-1">
@@ -155,7 +155,7 @@ export default function MockupSection() {
 
                     <div className="px-4 pb-3">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="h-6 w-6 rounded-full bg-[#ff7a4d] flex items-center justify-center">
+                        <div className="h-6 w-6 rounded-full bg-[#fb7246] flex items-center justify-center">
                           <span className="text-[8px] font-bold text-black">B+</span>
                         </div>
                         <span className="text-xs font-bold text-white">Bundly+</span>
@@ -173,8 +173,8 @@ export default function MockupSection() {
                               <p className="text-[9px] text-white/40">{item.tag}</p>
                             </div>
                             <div className="text-right">
-                              <p className="text-[10px] font-bold text-[#ff7a4d]">{item.price}</p>
-                              <div className="mt-0.5 rounded-full bg-[#ff7a4d]/20 px-1.5 py-0.5 text-[7px] font-bold text-[#ff7a4d]">HOT</div>
+                              <p className="text-[10px] font-bold text-[#fb7246]">{item.price}</p>
+                              <div className="mt-0.5 rounded-full bg-[#fb7246]/20 px-1.5 py-0.5 text-[7px] font-bold text-[#fb7246]">HOT</div>
                             </div>
                           </div>
                         ))}

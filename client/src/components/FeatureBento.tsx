@@ -2,8 +2,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const BUNDLE_TIERS = [
-  { label: "Starter Bundle", save: 50, color: "#39efd0" },
-  { label: "Popular Bundle", save: 120, color: "#ff7a4d" },
+  { label: "Starter Bundle", save: 50, color: "#2bfdc8" },
+  { label: "Popular Bundle", save: 120, color: "#fb7246" },
   { label: "Ultimate Bundle", save: 200, color: "#ffd700" },
 ];
 
@@ -40,18 +40,18 @@ export default function FeatureBento() {
     <section
       id="features"
       ref={sectionRef}
-      className="relative bg-[#050505] py-16 md:py-32 lg:py-44"
+      className="relative bg-[#1f2626] py-16 md:py-32 lg:py-44"
       style={{ overflowX: "hidden" }}
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
 
       <div className="mx-auto max-w-[1400px] w-full px-2 sm:px-6 md:px-10 lg:px-14 box-border">
         <motion.div style={{ y: headlineY, opacity: headlineOpacity }} className="mb-20 max-w-3xl w-full min-w-0">
-          <motion.span initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="mb-4 inline-block rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#ff7a4d]">
+          <motion.span initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="mb-4 inline-block rounded-full border border-[#fb7246]/30 bg-[#fb7246]/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#fb7246]">
             Platform Features
           </motion.span>
           <h2 style={{ fontFamily: "var(--font-syne)" }} className="text-4xl font-bold uppercase leading-[0.9] tracking-tight text-white md:text-6xl lg:text-7xl break-words">
-            Bundle &amp; <br /><span className="text-[#ff7a4d]">Save Big</span>
+            Bundle &amp; <br /><span className="text-[#fb7246]">Save Big</span>
           </h2>
         </motion.div>
 
@@ -105,12 +105,12 @@ export default function FeatureBento() {
               className="relative w-full min-w-0 overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-8 md:p-12"
             >
               <div className="mb-6 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#39efd0] animate-pulse" />
-                <span className="text-xs text-[#39efd0]/70 uppercase tracking-widest font-medium">4 Categories</span>
+                <span className="h-2 w-2 rounded-full bg-[#2bfdc8] animate-pulse" />
+                <span className="text-xs text-[#2bfdc8]/70 uppercase tracking-widest font-medium">4 Categories</span>
               </div>
 
               <div style={{ fontFamily: "var(--font-syne)" }} className="text-5xl sm:text-6xl font-bold text-white md:text-7xl break-words">
-                50+<br /><span className="text-[#ff7a4d]">Plans</span>
+                50+<br /><span className="text-[#fb7246]">Plans</span>
               </div>
 
               <p className="mt-5 text-sm leading-relaxed text-white/50 break-words">

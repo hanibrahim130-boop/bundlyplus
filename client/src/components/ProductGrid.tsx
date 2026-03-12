@@ -90,7 +90,7 @@ export default function ProductGrid() {
                 data-testid={`filter-${cat.replace(/[^a-z0-9]/gi, "-").toLowerCase()}`}
                 className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-all whitespace-nowrap ${
                   active
-                    ? "bg-[#ff7a4d] text-black shadow-[0_0_20px_rgba(255,122,77,0.35)]"
+                    ? "bg-[#fb7246] text-black shadow-[0_0_20px_rgba(255,122,77,0.35)]"
                     : "border border-white/10 text-slate-400 hover:border-white/25 hover:text-white bg-white/[0.03]"
                 }`}
               >
@@ -129,7 +129,7 @@ export default function ProductGrid() {
                       data-testid={`sort-${opt.key}`}
                       className={`w-full px-4 py-3 text-left text-xs font-medium transition-colors border-b border-white/5 last:border-0 ${
                         sortKey === opt.key
-                          ? "bg-[#ff7a4d]/15 text-[#ff7a4d]"
+                          ? "bg-[#fb7246]/15 text-[#fb7246]"
                           : "text-white/60 hover:bg-white/5 hover:text-white"
                       }`}
                     >
@@ -146,7 +146,7 @@ export default function ProductGrid() {
       {searchQuery && (
         <div className="flex items-center gap-2">
           <span className="text-xs text-white/40">Results for</span>
-          <span className="flex items-center gap-1.5 rounded-full border border-[#ff7a4d]/30 bg-[#ff7a4d]/10 px-3 py-1 text-xs font-bold text-[#ff7a4d]">
+          <span className="flex items-center gap-1.5 rounded-full border border-[#fb7246]/30 bg-[#fb7246]/10 px-3 py-1 text-xs font-bold text-[#fb7246]">
             "{searchQuery}"
             <button onClick={() => navigate("/")} className="hover:text-white transition-colors" data-testid="button-clear-search">
               <X className="h-3 w-3" />
@@ -183,7 +183,7 @@ export default function ProductGrid() {
               <button
                 onClick={() => setVisibleCount((v) => v + LOAD_MORE_STEP)}
                 data-testid="button-show-more"
-                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-8 py-3 text-sm font-bold text-white/60 hover:border-[#ff7a4d]/40 hover:text-[#ff7a4d] transition-all"
+                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-8 py-3 text-sm font-bold text-white/60 hover:border-[#fb7246]/40 hover:text-[#fb7246] transition-all"
               >
                 Show more
                 <ChevronDown className="h-4 w-4" />

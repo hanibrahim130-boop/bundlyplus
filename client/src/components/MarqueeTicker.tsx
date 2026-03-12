@@ -28,11 +28,11 @@ function TickerRow({ items, reverse = false }: { items: string[]; reverse?: bool
     <span key={i} className="flex items-center gap-6 whitespace-nowrap">
       <span
         style={{ fontFamily: "var(--font-syne)" }}
-        className="text-3xl font-bold uppercase tracking-tight text-white/10 transition-colors duration-300 hover:text-[#ff7a4d]/60 md:text-5xl"
+        className="text-3xl font-bold uppercase tracking-tight text-white/10 transition-colors duration-300 hover:text-[#fb7246]/60 md:text-5xl"
       >
         {item}
       </span>
-      <span className="text-xl text-[#ff7a4d]/35">+</span>
+      <span className="text-xl text-[#fb7246]/35">+</span>
     </span>
   ));
 
@@ -61,7 +61,7 @@ export default function MarqueeTicker() {
     <motion.section
       ref={sectionRef}
       style={{ skewY, scale, opacity, overflowX: "hidden" }}
-      className="relative bg-[#050505] py-8 md:py-12"
+      className="relative bg-[#1f2626] py-8 md:py-12"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

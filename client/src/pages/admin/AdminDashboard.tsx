@@ -20,8 +20,8 @@ export default function AdminDashboard() {
   const hotCount = products.filter((p) => p.hot).length;
 
   const stats = [
-    { label: "Total Products", value: products.length, icon: Package, color: "text-[#39efd0]", bg: "bg-[#39efd0]/10" },
-    { label: "Categories", value: categories.length, icon: Tag, color: "text-[#ff7a4d]", bg: "bg-[#ff7a4d]/10" },
+    { label: "Total Products", value: products.length, icon: Package, color: "text-[#2bfdc8]", bg: "bg-[#2bfdc8]/10" },
+    { label: "Categories", value: categories.length, icon: Tag, color: "text-[#fb7246]", bg: "bg-[#fb7246]/10" },
     { label: "Hot Items", value: hotCount, icon: Flame, color: "text-yellow-400", bg: "bg-yellow-400/10" },
   ];
 
@@ -42,19 +42,19 @@ export default function AdminDashboard() {
 
         <div className="grid grid-cols-2 gap-4">
           <Link href="/admin/products">
-            <a className="flex items-center gap-4 bg-[#141414] border border-white/[0.06] hover:border-[#ff7a4d]/30 rounded-2xl p-5 transition group">
-              <span className="bg-[#ff7a4d]/10 text-[#ff7a4d] p-3 rounded-xl"><Plus size={20} /></span>
+            <a className="flex items-center gap-4 bg-[#141414] border border-white/[0.06] hover:border-[#fb7246]/30 rounded-2xl p-5 transition group">
+              <span className="bg-[#fb7246]/10 text-[#fb7246] p-3 rounded-xl"><Plus size={20} /></span>
               <div>
-                <p className="font-semibold text-white group-hover:text-[#ff7a4d] transition">Add Product</p>
+                <p className="font-semibold text-white group-hover:text-[#fb7246] transition">Add Product</p>
                 <p className="text-xs text-slate-500">Create a new subscription listing</p>
               </div>
             </a>
           </Link>
           <Link href="/admin/settings">
-            <a className="flex items-center gap-4 bg-[#141414] border border-white/[0.06] hover:border-[#39efd0]/30 rounded-2xl p-5 transition group">
-              <span className="bg-[#39efd0]/10 text-[#39efd0] p-3 rounded-xl"><Settings size={20} /></span>
+            <a className="flex items-center gap-4 bg-[#141414] border border-white/[0.06] hover:border-[#2bfdc8]/30 rounded-2xl p-5 transition group">
+              <span className="bg-[#2bfdc8]/10 text-[#2bfdc8] p-3 rounded-xl"><Settings size={20} /></span>
               <div>
-                <p className="font-semibold text-white group-hover:text-[#39efd0] transition">Site Settings</p>
+                <p className="font-semibold text-white group-hover:text-[#2bfdc8] transition">Site Settings</p>
                 <p className="text-xs text-slate-500">Edit hero, WhatsApp, and more</p>
               </div>
             </a>
@@ -65,7 +65,7 @@ export default function AdminDashboard() {
           <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
             <h2 className="font-semibold text-white text-sm">All Products</h2>
             <Link href="/admin/products">
-              <a className="text-xs text-[#ff7a4d] hover:underline">Manage →</a>
+              <a className="text-xs text-[#fb7246] hover:underline">Manage →</a>
             </Link>
           </div>
           <div className="divide-y divide-white/[0.04]">
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
                 </div>
                 <span className="flex-1 text-sm text-white truncate">{p.name}</span>
                 <span className="text-xs text-slate-500 bg-white/5 px-2 py-0.5 rounded-full">{p.category}</span>
-                <span className="text-sm font-semibold text-[#39efd0]">${p.price.toFixed(2)}</span>
+                <span className="text-sm font-semibold text-[#2bfdc8]">${p.price.toFixed(2)}</span>
                 {p.hot && <span className="text-xs text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded-full">🔥 Hot</span>}
               </div>
             ))}

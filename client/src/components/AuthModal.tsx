@@ -12,11 +12,11 @@ function BundlyLogo({ size = 28 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
       <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
-      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" />
-      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.6" />
-      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.7" />
-      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.4" />
-      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.5" />
+      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#fb7246" />
+      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.6" />
+      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.7" />
+      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.4" />
+      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.5" />
     </svg>
   );
 }
@@ -74,7 +74,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)] pointer-events-auto"
+              className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[#233b35] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)] pointer-events-auto"
             >
               <button
                 onClick={onClose}
@@ -102,7 +102,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     onClick={() => switchMode(m)}
                     className={`flex-1 rounded-lg py-2 text-xs font-bold uppercase tracking-wider transition-all ${
                       mode === m
-                        ? "bg-[#ff7a4d] text-black shadow-[0_0_15px_rgba(255,122,77,0.3)]"
+                        ? "bg-[#fb7246] text-black shadow-[0_0_15px_rgba(255,122,77,0.3)]"
                         : "text-white/40 hover:text-white"
                     }`}
                   >
@@ -120,7 +120,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                       placeholder="Full name"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-4 text-sm text-white placeholder-white/25 outline-none focus:border-[#ff7a4d]/50 focus:ring-1 focus:ring-[#ff7a4d]/30 transition-all"
+                      className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-4 text-sm text-white placeholder-white/25 outline-none focus:border-[#fb7246]/50 focus:ring-1 focus:ring-[#fb7246]/30 transition-all"
                       data-testid="input-fullname"
                     />
                   </div>
@@ -132,7 +132,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     placeholder="Email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-4 text-sm text-white placeholder-white/25 outline-none focus:border-[#ff7a4d]/50 focus:ring-1 focus:ring-[#ff7a4d]/30 transition-all"
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-4 text-sm text-white placeholder-white/25 outline-none focus:border-[#fb7246]/50 focus:ring-1 focus:ring-[#fb7246]/30 transition-all"
                     data-testid="input-email"
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-10 text-sm text-white placeholder-white/25 outline-none focus:border-[#ff7a4d]/50 focus:ring-1 focus:ring-[#ff7a4d]/30 transition-all"
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-10 text-sm text-white placeholder-white/25 outline-none focus:border-[#fb7246]/50 focus:ring-1 focus:ring-[#fb7246]/30 transition-all"
                     data-testid="input-password"
                   />
                   <button
@@ -169,7 +169,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff7a4d] py-3.5 text-sm font-bold text-black shadow-[0_0_25px_rgba(255,122,77,0.35)] hover:shadow-[0_0_35px_rgba(255,122,77,0.55)] hover:opacity-90 disabled:opacity-60 transition-all"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#fb7246] py-3.5 text-sm font-bold text-black shadow-[0_0_25px_rgba(255,122,77,0.35)] hover:shadow-[0_0_35px_rgba(255,122,77,0.55)] hover:opacity-90 disabled:opacity-60 transition-all"
                   data-testid="button-submit-auth"
                 >
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}

@@ -98,7 +98,7 @@ function ProductSheet({ product, onClose, onSave }: { product: Product | null; o
             <div
               onClick={() => set("hot", !form.hot)}
               data-testid="toggle-product-hot"
-              className={`w-10 h-6 rounded-full transition-all flex items-center px-0.5 ${form.hot ? "bg-[#ff7a4d]" : "bg-white/10"}`}
+              className={`w-10 h-6 rounded-full transition-all flex items-center px-0.5 ${form.hot ? "bg-[#fb7246]" : "bg-white/10"}`}
             >
               <div className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${form.hot ? "translate-x-4" : ""}`} />
             </div>
@@ -110,7 +110,7 @@ function ProductSheet({ product, onClose, onSave }: { product: Product | null; o
 
         <div className="px-6 py-5 border-t border-white/10 sticky bottom-0 bg-[#111] flex gap-3">
           <button type="button" onClick={onClose} className="flex-1 border border-white/10 text-slate-400 hover:text-white hover:border-white/25 py-2.5 rounded-xl text-sm transition">Cancel</button>
-          <button onClick={handleSubmit as any} disabled={saving} data-testid="button-save-product" className="flex-1 bg-[#ff7a4d] hover:bg-orange-500 disabled:opacity-50 text-white font-semibold py-2.5 rounded-xl text-sm transition">
+          <button onClick={handleSubmit as any} disabled={saving} data-testid="button-save-product" className="flex-1 bg-[#fb7246] hover:bg-orange-500 disabled:opacity-50 text-white font-semibold py-2.5 rounded-xl text-sm transition">
             {saving ? "Saving…" : isNew ? "Add Product" : "Save Changes"}
           </button>
         </div>
@@ -128,8 +128,8 @@ function Field({ label, children, className = "" }: { label: string; children: R
   );
 }
 
-const INPUT = "w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#ff7a4d]/60 focus:ring-1 focus:ring-[#ff7a4d]/20 transition";
-const SELECT = "w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ff7a4d]/60 focus:ring-1 focus:ring-[#ff7a4d]/20 transition";
+const INPUT = "w-full bg-[#233b35] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#fb7246]/60 focus:ring-1 focus:ring-[#fb7246]/20 transition";
+const SELECT = "w-full bg-[#233b35] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#fb7246]/60 focus:ring-1 focus:ring-[#fb7246]/20 transition";
 
 export default function AdminProducts() {
   const { verified } = useAdminAuth();
@@ -191,10 +191,10 @@ export default function AdminProducts() {
               value={search} onChange={(e) => setSearch(e.target.value)}
               placeholder="Search products…"
               data-testid="input-search-products"
-              className="w-full bg-[#141414] border border-white/10 rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#ff7a4d]/60 focus:ring-1 focus:ring-[#ff7a4d]/20 transition"
+              className="w-full bg-[#141414] border border-white/10 rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#fb7246]/60 focus:ring-1 focus:ring-[#fb7246]/20 transition"
             />
           </div>
-          <button onClick={() => setEditing("new")} data-testid="button-add-product" className="flex items-center gap-2 bg-[#ff7a4d] hover:bg-orange-500 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition">
+          <button onClick={() => setEditing("new")} data-testid="button-add-product" className="flex items-center gap-2 bg-[#fb7246] hover:bg-orange-500 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition">
             <Plus size={16} /> Add Product
           </button>
         </div>
@@ -202,7 +202,7 @@ export default function AdminProducts() {
         <div className="flex gap-2 flex-wrap">
           {categories.map((c) => (
             <button key={c} onClick={() => setCategoryFilter(c)} data-testid={`filter-${c.toLowerCase().replace(/\s/g, "-")}`}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${categoryFilter === c ? "bg-[#ff7a4d] text-white" : "bg-white/5 text-slate-400 hover:text-white"}`}>
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${categoryFilter === c ? "bg-[#fb7246] text-white" : "bg-white/5 text-slate-400 hover:text-white"}`}>
               {c}
             </button>
           ))}
@@ -230,13 +230,13 @@ export default function AdminProducts() {
                     </div>
                   </div>
                   <span className="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded-full w-fit">{p.category}</span>
-                  <span className="text-sm font-semibold text-[#39efd0]">${p.price.toFixed(2)}/mo</span>
+                  <span className="text-sm font-semibold text-[#2bfdc8]">${p.price.toFixed(2)}/mo</span>
                   <span className={`text-xs px-2 py-1 rounded-full w-fit ${p.account_type === "Private" ? "bg-purple-400/10 text-purple-400" : "bg-blue-400/10 text-blue-400"}`}>{p.account_type}</span>
                   <div>
                     <button
                       onClick={() => hotMutation.mutate({ id: p.id, hot: !p.hot })}
                       data-testid={`toggle-hot-${p.id}`}
-                      className={`w-9 h-5 rounded-full transition-all flex items-center px-0.5 ${p.hot ? "bg-[#ff7a4d]" : "bg-white/10"}`}
+                      className={`w-9 h-5 rounded-full transition-all flex items-center px-0.5 ${p.hot ? "bg-[#fb7246]" : "bg-white/10"}`}
                     >
                       <div className={`w-4 h-4 rounded-full bg-white shadow transition-transform ${p.hot ? "translate-x-4" : ""}`} />
                     </button>

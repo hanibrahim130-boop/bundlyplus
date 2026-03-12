@@ -103,7 +103,7 @@ function RecentBuyBadge() {
         transition={{ duration: 0.3 }}
         className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.06] backdrop-blur-sm px-3.5 py-2"
       >
-        <div className="h-6 w-6 rounded-full bg-[#ff7a4d] flex items-center justify-center shrink-0">
+        <div className="h-6 w-6 rounded-full bg-[#fb7246] flex items-center justify-center shrink-0">
           <span className="text-[8px] font-black text-black">B+</span>
         </div>
         <div>
@@ -134,7 +134,7 @@ export default function HeroSection() {
   const scrollToSubscriptions = () => document.querySelector("#subscriptions")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section ref={sectionRef} className="relative bg-[#050505] flex flex-col" style={{ minHeight: "100svh", overflowX: "hidden" }} data-testid="section-hero">
+    <section ref={sectionRef} className="relative bg-[#1f2626] flex flex-col" style={{ minHeight: "100svh", overflowX: "hidden" }} data-testid="section-hero">
       <HeroBackground />
 
       <div className="relative z-10 flex flex-1 items-center">
@@ -164,7 +164,7 @@ export default function HeroSection() {
           </motion.div>
 
           <div className="relative mb-4" style={{ perspective: "900px" }}>
-            <div className="absolute inset-0 blur-[70px] opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse, #ff7a4d 0%, transparent 65%)" }} />
+            <div className="absolute inset-0 blur-[70px] opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse, #fb7246 0%, transparent 65%)" }} />
             <motion.h1
               initial={{ opacity: 0, y: 36, rotateX: 18 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -179,7 +179,7 @@ export default function HeroSection() {
             >
               <span className="block text-white drop-shadow-[0_0_60px_rgba(255,255,255,0.08)]">Bundle</span>
               <span className="block relative" style={{
-                background: "linear-gradient(135deg, #ff7a4d 0%, #ffb347 40%, #ff4d4d 100%)",
+                background: "linear-gradient(135deg, #fb7246 0%, #ffb347 40%, #ff4d4d 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -191,7 +191,7 @@ export default function HeroSection() {
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 0.9, type: "spring", stiffness: 280, damping: 12 }}
-                  style={{ WebkitTextFillColor: "#ff7a4d", filter: "drop-shadow(0 0 18px rgba(255,122,77,0.9))" }}
+                  style={{ WebkitTextFillColor: "#fb7246", filter: "drop-shadow(0 0 18px rgba(255,122,77,0.9))" }}
                 >+</motion.span>
               </span>
             </motion.h1>
@@ -215,7 +215,7 @@ export default function HeroSection() {
             <motion.button
               onClick={scrollToProducts}
               className="group relative flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-black text-xs uppercase tracking-wider text-black overflow-hidden"
-              style={{ background: "linear-gradient(135deg, #ff7a4d, #ffb347)", boxShadow: "0 0 36px rgba(255,122,77,0.3)" }}
+              style={{ background: "linear-gradient(135deg, #fb7246, #ffb347)", boxShadow: "0 0 36px rgba(255,122,77,0.3)" }}
               whileHover={{ scale: 1.05, boxShadow: "0 0 56px rgba(255,122,77,0.5)" }}
               whileTap={{ scale: 0.96 }}
               data-testid="button-shop-now"
@@ -248,7 +248,7 @@ export default function HeroSection() {
             transition={{ delay: 1.0, duration: 0.8 }}
             className="mt-8 sm:mt-10 flex items-center justify-center gap-5 sm:gap-10 md:gap-14"
           >
-            <StatCounter icon={Package} value={50} suffix="+" label="Products" color="#ff7a4d" delay={1.1} />
+            <StatCounter icon={Package} value={50} suffix="+" label="Products" color="#fb7246" delay={1.1} />
             <div className="h-7 w-px bg-white/10" />
             <StatCounter icon={Users} value={1000} suffix="+" label="Happy Users" color="#5865F2" delay={1.2} />
             <div className="h-7 w-px bg-white/10" />
@@ -264,7 +264,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 overflow-hidden border-t border-white/[0.04] bg-[#0a0a0a]">
+      <div className="relative z-10 overflow-hidden border-t border-white/[0.04] bg-[#233b35]">
         <motion.div
           className="flex gap-7 py-2.5"
           animate={{ x: ["0%", "-50%"] }}

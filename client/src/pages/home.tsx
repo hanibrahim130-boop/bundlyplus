@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#050505] min-h-screen w-full pb-[120px]" style={{ overflowX: 'hidden' }}>
+    <main className="bg-[#1f2626] min-h-screen w-full pb-[120px]" style={{ overflowX: 'hidden' }}>
       <Navbar />
       <HeroSection />
       <MarqueeTicker />

@@ -34,7 +34,7 @@ export default function AdminLogin() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-3">
             <span style={{ fontFamily: "var(--font-syne)" }} className="text-2xl font-black text-white">
-              BUNDLY<span className="text-[#ff7a4d]">+</span>
+              BUNDLY<span className="text-[#fb7246]">+</span>
             </span>
           </div>
           <p className="text-sm text-slate-400">Admin Dashboard</p>
@@ -51,7 +51,7 @@ export default function AdminLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter admin password"
                 data-testid="input-admin-password"
-                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#ff7a4d]/60 focus:ring-1 focus:ring-[#ff7a4d]/30 transition"
+                className="w-full bg-[#233b35] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#fb7246]/60 focus:ring-1 focus:ring-[#fb7246]/30 transition"
                 required
                 autoFocus
               />
@@ -65,7 +65,7 @@ export default function AdminLogin() {
               type="submit"
               data-testid="button-admin-login"
               disabled={loading}
-              className="w-full bg-[#ff7a4d] hover:bg-orange-500 disabled:opacity-50 text-white font-semibold py-3 rounded-xl text-sm transition"
+              className="w-full bg-[#fb7246] hover:bg-orange-500 disabled:opacity-50 text-white font-semibold py-3 rounded-xl text-sm transition"
             >
               {loading ? "Signing in…" : "Sign in"}
             </button>

@@ -42,11 +42,11 @@ export default function CartDrawer() {
       <button
         onClick={() => setOpen(true)}
         data-testid="button-open-cart"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#ff7a4d] text-white shadow-[0_0_30px_rgba(255,122,77,0.5)] transition hover:bg-orange-500 hover:scale-110 active:scale-95"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#fb7246] text-white shadow-[0_0_30px_rgba(255,122,77,0.5)] transition hover:bg-orange-500 hover:scale-110 active:scale-95"
       >
         <ShoppingCart size={22} />
         {count > 0 && (
-          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#39efd0] text-[10px] font-bold text-black">
+          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#2bfdc8] text-[10px] font-bold text-black">
             {count}
           </span>
         )}
@@ -60,7 +60,7 @@ export default function CartDrawer() {
       )}
 
       <div
-        className={`fixed right-0 top-0 z-50 h-full w-full max-w-md transform border-l border-white/10 bg-[#0a0a0a] ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed right-0 top-0 z-50 h-full w-full max-w-md transform border-l border-white/10 bg-[#233b35] ${open ? "translate-x-0" : "translate-x-full"}`}
         style={{ transition: "transform 300ms cubic-bezier(0.16,1,0.3,1)" }}
       >
         <div className="flex h-full flex-col">
@@ -74,10 +74,10 @@ export default function CartDrawer() {
               <ArrowLeft size={16} />
             </button>
             <h2 style={{ fontFamily: "var(--font-syne)" }} className="flex-1 text-lg font-bold text-white">
-              Cart {count > 0 && <span className="text-[#ff7a4d]">({count})</span>}
+              Cart {count > 0 && <span className="text-[#fb7246]">({count})</span>}
             </h2>
             {count > 0 && (
-              <span className="rounded-full bg-[#ff7a4d]/15 px-2.5 py-1 text-[11px] font-bold text-[#ff7a4d]">
+              <span className="rounded-full bg-[#fb7246]/15 px-2.5 py-1 text-[11px] font-bold text-[#fb7246]">
                 {count} item{count !== 1 ? "s" : ""}
               </span>
             )}
@@ -91,7 +91,7 @@ export default function CartDrawer() {
                 <p className="mt-1 text-xs text-slate-600">Add a subscription bundle to get started.</p>
                 <button
                   onClick={() => setOpen(false)}
-                  className="mt-4 text-xs text-[#ff7a4d] hover:underline"
+                  className="mt-4 text-xs text-[#fb7246] hover:underline"
                 >
                   Continue Shopping
                 </button>
@@ -109,7 +109,7 @@ export default function CartDrawer() {
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-semibold text-white">{item.name}</p>
                           <p className="text-xs text-slate-400">${item.price.toFixed(2)} each</p>
-                          <p className="text-xs font-bold text-[#ff7a4d]">Total: ${lineTotal.toFixed(2)}</p>
+                          <p className="text-xs font-bold text-[#fb7246]">Total: ${lineTotal.toFixed(2)}</p>
                         </div>
                         <div className="flex items-center gap-1.5">
                           <button

@@ -20,7 +20,7 @@ export default function AdminLayout({ children, title }: { children: React.React
       <aside className="fixed top-0 left-0 h-full w-60 bg-[#111111] border-r border-white/[0.06] flex flex-col z-40">
         <div className="px-5 py-5 border-b border-white/[0.06]">
           <span style={{ fontFamily: "var(--font-syne)" }} className="text-lg font-black text-white">
-            BUNDLY<span className="text-[#ff7a4d]">+</span>
+            BUNDLY<span className="text-[#fb7246]">+</span>
           </span>
           <p className="text-[10px] text-slate-500 mt-0.5 uppercase tracking-widest">Admin Panel</p>
         </div>
@@ -34,7 +34,7 @@ export default function AdminLayout({ children, title }: { children: React.React
                   data-testid={`nav-admin-${label.toLowerCase()}`}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                     active
-                      ? "bg-[#ff7a4d]/15 text-[#ff7a4d]"
+                      ? "bg-[#fb7246]/15 text-[#fb7246]"
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >

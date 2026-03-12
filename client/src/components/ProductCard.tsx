@@ -192,7 +192,7 @@ export default function ProductCard({ product }: { product: Product }) {
         />
 
         {product.hot && (
-          <div className="absolute right-3 top-3 z-10 rounded-full bg-[#ff7a4d] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black">
+          <div className="absolute right-3 top-3 z-10 rounded-full bg-[#fb7246] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black">
             Hot
           </div>
         )}
@@ -206,7 +206,7 @@ export default function ProductCard({ product }: { product: Product }) {
               className="h-12 w-auto max-w-[130px] object-contain transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff7a4d]/20 to-[#ff7a4d]/5 text-xl font-bold text-[#ff7a4d]">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#fb7246]/20 to-[#fb7246]/5 text-xl font-bold text-[#fb7246]">
               {initials}
             </div>
           )}
@@ -233,7 +233,7 @@ export default function ProductCard({ product }: { product: Product }) {
               </div>
               <div className="text-[10px] text-white/30">
                 {selectedDuration.discount > 0 ? (
-                  <span className="text-[#39efd0]">-{selectedDuration.discount}%</span>
+                  <span className="text-[#2bfdc8]">-{selectedDuration.discount}%</span>
                 ) : "USD"}
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function ProductCard({ product }: { product: Product }) {
                 data-testid={`button-duration-${product.id}-${d.label}`}
                 className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold transition-all ${
                   duration === i
-                    ? "bg-[#ff7a4d] text-black"
+                    ? "bg-[#fb7246] text-black"
                     : "border border-white/10 text-white/40 hover:border-white/25 hover:text-white/70"
                 }`}
               >
@@ -265,7 +265,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <ul className="mb-4 space-y-1.5">
               {product.features.slice(0, 3).map((f, i) => (
                 <li key={i} className="flex items-start gap-2 text-xs text-white/50">
-                  <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff7a4d]/60" />
+                  <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#fb7246]/60" />
                   {f}
                 </li>
               ))}
@@ -291,8 +291,8 @@ export default function ProductCard({ product }: { product: Product }) {
               data-testid={`button-add-${product.id}`}
               className={`flex-1 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                 added
-                  ? "bg-[#39efd0]/20 text-[#39efd0] border border-[#39efd0]/30"
-                  : "bg-white/5 border border-white/10 text-white hover:bg-[#ff7a4d] hover:border-[#ff7a4d] hover:text-black hover:shadow-[0_0_20px_rgba(255,122,77,0.3)]"
+                  ? "bg-[#2bfdc8]/20 text-[#2bfdc8] border border-[#2bfdc8]/30"
+                  : "bg-white/5 border border-white/10 text-white hover:bg-[#fb7246] hover:border-[#fb7246] hover:text-black hover:shadow-[0_0_20px_rgba(255,122,77,0.3)]"
               }`}
             >
               {added ? "✓" : "Add"}

@@ -20,11 +20,11 @@ function BundlyLogo({ size = 28 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
       <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
-      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" />
-      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.6" />
-      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.7" />
-      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.4" />
-      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.5" />
+      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#fb7246" />
+      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.6" />
+      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.7" />
+      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.4" />
+      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.5" />
     </svg>
   );
 }
@@ -38,9 +38,9 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer ref={ref} className="relative bg-[#050505] pb-10 pt-32 md:pt-48" style={{ overflowX: "hidden" }}>
+    <footer ref={ref} className="relative bg-[#1f2626] pb-10 pt-32 md:pt-48" style={{ overflowX: "hidden" }}>
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff7a4d]/5 blur-[200px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#fb7246]/5 blur-[200px]" />
 
       <motion.div style={{ y, opacity }} className="mx-auto max-w-[1400px] px-2 sm:px-6 md:px-10 lg:px-14">
         <div className="mb-20">
@@ -50,7 +50,7 @@ export default function Footer() {
           >
             Ready to
             <br />
-            <span className="text-[#ff7a4d]">bundle?</span>
+            <span className="text-[#fb7246]">bundle?</span>
           </h2>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-white/40">
             Brutalist subscriptions for modern commerce. Built with obsessive attention to speed and craft.
@@ -59,7 +59,7 @@ export default function Footer() {
             <button
               onClick={() => document.querySelector("#products")?.scrollIntoView({ behavior: "smooth" })}
               data-testid="button-footer-shop"
-              className="flex items-center gap-2 rounded-full bg-[#ff7a4d] px-8 py-4 text-sm font-bold text-black shadow-[0_0_40px_rgba(255,122,77,0.4)] hover:shadow-[0_0_60px_rgba(255,122,77,0.6)] hover:scale-105 active:scale-95 transition-all"
+              className="flex items-center gap-2 rounded-full bg-[#fb7246] px-8 py-4 text-sm font-bold text-black shadow-[0_0_40px_rgba(255,122,77,0.4)] hover:shadow-[0_0_60px_rgba(255,122,77,0.6)] hover:scale-105 active:scale-95 transition-all"
             >
               Get Started Now
             </button>
@@ -83,7 +83,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <BundlyLogo size={28} />
               <span style={{ fontFamily: "var(--font-syne)" }} className="font-bold text-white">
-                Bundly<span className="text-[#ff7a4d]">+</span>
+                Bundly<span className="text-[#fb7246]">+</span>
               </span>
             </div>
 

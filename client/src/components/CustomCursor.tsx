@@ -49,14 +49,14 @@ export default function CustomCursor() {
     <>
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[120] h-3 w-3 rounded-full bg-[#ff7a4d] mix-blend-screen"
+        className="pointer-events-none fixed left-0 top-0 z-[120] h-3 w-3 rounded-full bg-[#fb7246] mix-blend-screen"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
         animate={{ scale: isHovering ? 2.6 : 1, boxShadow: isHovering ? "0 0 40px 12px rgba(255,122,77,0.45)" : "0 0 16px 2px rgba(255,122,77,0.35)" }}
         transition={{ type: "spring", stiffness: 380, damping: 24 }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[119] h-10 w-10 rounded-full border border-[#39efd0]/55"
+        className="pointer-events-none fixed left-0 top-0 z-[119] h-10 w-10 rounded-full border border-[#2bfdc8]/55"
         style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
         animate={{ scale: isHovering ? 1.35 : 1, opacity: isHovering ? 0.9 : 0.48 }}
         transition={{ type: "spring", stiffness: 300, damping: 28 }}

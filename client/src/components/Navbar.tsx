@@ -17,11 +17,11 @@ function BundlyLogo({ size = 32 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
       <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
-      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" />
-      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.6" />
-      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.7" />
-      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.4" />
-      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#ff7a4d" opacity="0.5" />
+      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#fb7246" />
+      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.6" />
+      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.7" />
+      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.4" />
+      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.5" />
     </svg>
   );
 }
@@ -104,9 +104,9 @@ export default function Navbar() {
           <BundlyLogo size={34} />
           <span
             style={{ fontFamily: "var(--font-syne)" }}
-            className="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-[#ff7a4d] transition-colors"
+            className="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-[#fb7246] transition-colors"
           >
-            Bundly<span className="text-[#ff7a4d]">+</span>
+            Bundly<span className="text-[#fb7246]">+</span>
           </span>
         </button>
 
@@ -143,7 +143,7 @@ export default function Navbar() {
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search..."
                   data-testid="input-search"
-                  className="w-full rounded-full border border-white/15 bg-white/8 py-2 pl-8 pr-8 text-xs text-white placeholder-white/30 outline-none focus:border-[#ff7a4d]/50 focus:bg-white/10 transition-all"
+                  className="w-full rounded-full border border-white/15 bg-white/8 py-2 pl-8 pr-8 text-xs text-white placeholder-white/30 outline-none focus:border-[#fb7246]/50 focus:bg-white/10 transition-all"
                   style={{ background: "rgba(255,255,255,0.06)" }}
                 />
                 <button
@@ -177,7 +177,7 @@ export default function Navbar() {
             <ShoppingBag className="h-4 w-4" />
             Cart
             {count > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff7a4d] text-[10px] font-bold text-white shadow-[0_0_10px_rgba(255,122,77,0.5)]">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#fb7246] text-[10px] font-bold text-white shadow-[0_0_10px_rgba(255,122,77,0.5)]">
                 {count}
               </span>
             )}
@@ -186,7 +186,7 @@ export default function Navbar() {
           <button
             onClick={() => setAuthOpen(true)}
             data-testid="button-login"
-            className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#ff7a4d] text-white font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(255,122,77,0.35)] hover:shadow-[0_0_35px_rgba(255,122,77,0.55)] hover:scale-105 active:scale-95 transition-all whitespace-nowrap ${searchOpen ? "hidden sm:flex" : "flex"}`}
+            className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#fb7246] text-white font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(255,122,77,0.35)] hover:shadow-[0_0_35px_rgba(255,122,77,0.55)] hover:scale-105 active:scale-95 transition-all whitespace-nowrap ${searchOpen ? "hidden sm:flex" : "flex"}`}
           >
             <User className="h-4 w-4" />
             <span className="hidden xs:inline">Log In</span>
@@ -255,7 +255,7 @@ export default function Navbar() {
                   <ShoppingBag className="h-4 w-4" />
                   Cart
                   {count > 0 && (
-                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff7a4d] text-[10px] font-bold text-white">
+                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#fb7246] text-[10px] font-bold text-white">
                       {count}
                     </span>
                   )}
@@ -263,7 +263,7 @@ export default function Navbar() {
                 <button
                   onClick={() => { setMobileMenuOpen(false); setAuthOpen(true); }}
                   data-testid="button-mobile-login"
-                  className="flex flex-1 items-center justify-center gap-2 py-3 rounded-xl bg-[#ff7a4d] text-sm font-bold text-black shadow-[0_0_20px_rgba(255,122,77,0.3)] transition-all"
+                  className="flex flex-1 items-center justify-center gap-2 py-3 rounded-xl bg-[#fb7246] text-sm font-bold text-black shadow-[0_0_20px_rgba(255,122,77,0.3)] transition-all"
                 >
                   <User className="h-4 w-4" />
                   Log In

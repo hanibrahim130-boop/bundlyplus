@@ -35,17 +35,17 @@ export default function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-        <div className="h-10 w-10 rounded-full border-2 border-[#ff7a4d] border-t-transparent animate-spin" />
+      <div className="min-h-screen bg-[#1f2626] flex items-center justify-center">
+        <div className="h-10 w-10 rounded-full border-2 border-[#fb7246] border-t-transparent animate-spin" />
       </div>
     );
   }
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center gap-4 text-white">
+      <div className="min-h-screen bg-[#1f2626] flex flex-col items-center justify-center gap-4 text-white">
         <p className="text-2xl font-bold">Product not found</p>
-        <a href="/" className="text-[#ff7a4d] hover:underline">← Back to products</a>
+        <a href="/" className="text-[#fb7246] hover:underline">← Back to products</a>
       </div>
     );
   }
@@ -53,7 +53,7 @@ export default function ProductPage() {
   const selectedDuration = DURATIONS[duration];
   const discountedPrice = product.price * selectedDuration.months * (1 - selectedDuration.discount / 100);
   const initials = product.name.slice(0, 2).toUpperCase();
-  const accentColor = categoryColors[product.category] ?? "#ff7a4d";
+  const accentColor = categoryColors[product.category] ?? "#fb7246";
 
   const handleAdd = () => {
     addToCart({
@@ -74,7 +74,7 @@ export default function ProductPage() {
   );
 
   return (
-    <main className="min-h-screen bg-[#050505]">
+    <main className="min-h-screen bg-[#1f2626]">
       <Navbar />
       <CartDrawer />
 
@@ -118,7 +118,7 @@ export default function ProductPage() {
                 <ul className="space-y-3">
                   {product.features.map((f, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-white/70">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#39efd0]" />
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#2bfdc8]" />
                       {f}
                     </li>
                   ))}
@@ -141,7 +141,7 @@ export default function ProductPage() {
                 {product.account_type ?? "Shared"}
               </span>
               {product.hot && (
-                <span className="rounded-full bg-[#ff7a4d] px-3 py-1 text-[11px] font-bold text-black">Hot</span>
+                <span className="rounded-full bg-[#fb7246] px-3 py-1 text-[11px] font-bold text-black">Hot</span>
               )}
             </div>
 
@@ -166,7 +166,7 @@ export default function ProductPage() {
                       data-testid={`button-duration-${d.months}mo`}
                       className={`rounded-xl border px-4 py-3 text-left transition-all ${
                         duration === i
-                          ? "border-[#ff7a4d]/50 bg-[#ff7a4d]/10"
+                          ? "border-[#fb7246]/50 bg-[#fb7246]/10"
                           : "border-white/[0.08] bg-white/[0.02] hover:border-white/20"
                       }`}
                     >
@@ -175,12 +175,12 @@ export default function ProductPage() {
                           {d.label}
                         </span>
                         {d.discount > 0 && (
-                          <span className="rounded-full bg-[#39efd0]/15 px-2 py-0.5 text-[10px] font-bold text-[#39efd0]">
+                          <span className="rounded-full bg-[#2bfdc8]/15 px-2 py-0.5 text-[10px] font-bold text-[#2bfdc8]">
                             -{d.discount}%
                           </span>
                         )}
                       </div>
-                      <div className={`mt-1 text-lg font-black ${duration === i ? "text-[#ff7a4d]" : "text-white/40"}`}>
+                      <div className={`mt-1 text-lg font-black ${duration === i ? "text-[#fb7246]" : "text-white/40"}`}>
                         ${totalPrice.toFixed(2)}<span className="text-xs font-normal opacity-60"> total</span>
                       </div>
                     </button>
@@ -205,9 +205,9 @@ export default function ProductPage() {
                   )}
                 </div>
                 {selectedDuration.discount > 0 && (
-                  <div className="rounded-2xl bg-[#39efd0]/10 px-4 py-2 text-center">
-                    <p className="text-2xl font-black text-[#39efd0]">{selectedDuration.discount}%</p>
-                    <p className="text-xs text-[#39efd0]/70">off</p>
+                  <div className="rounded-2xl bg-[#2bfdc8]/10 px-4 py-2 text-center">
+                    <p className="text-2xl font-black text-[#2bfdc8]">{selectedDuration.discount}%</p>
+                    <p className="text-xs text-[#2bfdc8]/70">off</p>
                   </div>
                 )}
               </div>
@@ -219,8 +219,8 @@ export default function ProductPage() {
                 data-testid="button-add-to-cart"
                 className={`flex items-center justify-center gap-2 rounded-2xl py-4 text-sm font-black uppercase tracking-wider transition-all ${
                   added
-                    ? "bg-[#39efd0]/20 text-[#39efd0] border border-[#39efd0]/30"
-                    : "bg-[#ff7a4d] text-black hover:shadow-[0_0_40px_rgba(255,122,77,0.4)] hover:scale-[1.02]"
+                    ? "bg-[#2bfdc8]/20 text-[#2bfdc8] border border-[#2bfdc8]/30"
+                    : "bg-[#fb7246] text-black hover:shadow-[0_0_40px_rgba(255,122,77,0.4)] hover:scale-[1.02]"
                 }`}
               >
                 <ShoppingCart className="h-4 w-4" />
@@ -263,13 +263,13 @@ export default function ProductPage() {
                   {p.image_url ? (
                     <img src={p.image_url} alt={p.name} className="h-10 w-10 object-contain shrink-0" />
                   ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff7a4d]/15 text-xs font-bold text-[#ff7a4d] shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fb7246]/15 text-xs font-bold text-[#fb7246] shrink-0">
                       {p.name.slice(0, 2).toUpperCase()}
                     </div>
                   )}
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-white truncate">{p.name}</p>
-                    <p className="text-xs text-[#ff7a4d] font-bold">${p.price.toFixed(2)}/mo</p>
+                    <p className="text-xs text-[#fb7246] font-bold">${p.price.toFixed(2)}/mo</p>
                   </div>
                 </a>
               ))}
