@@ -11,6 +11,9 @@ import AdminLogin from "@/pages/admin/AdminLogin";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import AdminProducts from "@/pages/admin/AdminProducts";
 import AdminSettings from "@/pages/admin/AdminSettings";
+import SplashScreen from "@/components/SplashScreen";
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 
 function Router() {
   return (
@@ -27,12 +30,33 @@ function Router() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(() => {
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname;
+      if (path.startsWith("/admin")) return false;
+      return !sessionStorage.getItem("bundly_splash_seen");
+    }
+    return false;
+  });
+
+  const handleSplashComplete = useCallback(() => {
+    sessionStorage.setItem("bundly_splash_seen", "1");
+    setShowSplash(false);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <CustomCursor />
         <Toaster />
-        <Router />
+        {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+        <motion.div
+          initial={showSplash ? { opacity: 0, y: 12 } : { opacity: 1, y: 0 }}
+          animate={!showSplash ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Router />
+        </motion.div>
       </TooltipProvider>
     </QueryClientProvider>
   );
