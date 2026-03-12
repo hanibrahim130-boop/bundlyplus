@@ -18,6 +18,7 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [scrolled, setScrolled] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const [, navigate] = useLocation();
 
@@ -75,13 +76,23 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-3 py-3 sm:px-6 sm:py-4 md:px-12 backdrop-blur-md bg-black/10"
+        className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-3 py-3 sm:px-6 sm:py-4 md:px-12 transition-all duration-500 ${
+          scrolled
+            ? "backdrop-blur-xl bg-black/60 border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            : "backdrop-blur-md bg-black/10"
+        }`}
       >
         <button
           onClick={() => scrollTo("#")}

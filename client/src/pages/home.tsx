@@ -9,23 +9,42 @@ import FAQ from "@/components/FAQ";
 import MockupSection from "@/components/MockupSection";
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
-    <main className="bg-[#1f2626] min-h-screen w-full pb-[120px]" style={{ overflowX: 'hidden' }}>
+    <main className="bg-[#050505] min-h-screen w-full pb-[120px]" style={{ overflowX: 'hidden' }}>
       <Navbar />
       <HeroSection />
-      <MarqueeTicker />
-      <FeatureBento />
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6 md:px-10 lg:px-14 py-16 md:py-24" style={{ overflowX: "hidden" }}>
-        <ProductGrid />
-      </section>
-      <SubscriptionSection />
-      <Testimonials />
-      <FAQ />
-      <MockupSection />
+      <ScrollReveal>
+        <MarqueeTicker />
+      </ScrollReveal>
+      <ScrollReveal delay={0.1}>
+        <FeatureBento />
+      </ScrollReveal>
+      <ScrollReveal>
+        <section className="mx-auto max-w-[1200px] px-4 sm:px-6 md:px-10 lg:px-14 py-16 md:py-24" style={{ overflowX: "hidden" }}>
+          <ProductGrid />
+        </section>
+      </ScrollReveal>
+      <ScrollReveal>
+        <SubscriptionSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FAQ />
+      </ScrollReveal>
+      <ScrollReveal>
+        <MockupSection />
+      </ScrollReveal>
       <CartDrawer />
-      <Footer />
+      <ScrollReveal direction="up" distance={30}>
+        <Footer />
+      </ScrollReveal>
+      <BackToTop />
     </main>
   );
 }
