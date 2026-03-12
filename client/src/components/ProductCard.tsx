@@ -32,20 +32,20 @@ const SI = "https://cdn.simpleicons.org";
 const WIKI = "https://upload.wikimedia.org/wikipedia/commons";
 
 const LOGO_RULES: Array<[string, string]> = [
-  // Streaming — simpleicons confirmed working
-  ["netflix",          `${SI}/netflix`],
-  ["youtube",          `${SI}/youtube`],
-  ["disney",           `${WIKI}/3/3e/Disney%2B_logo.svg`],
-  ["paramount",        `${SI}/paramountplus`],
-  ["prime video",      `${WIKI}/1/11/Amazon_Prime_Video_logo.svg`],
-  ["amazon prime",     `${WIKI}/1/11/Amazon_Prime_Video_logo.svg`],
+  ["netflix",          `${SI}/netflix/E50914`],
+  ["youtube",          `${SI}/youtube/FF0000`],
+  ["disney",           `${SI}/disneyplus/113CCF`],
+  ["paramount",        `${SI}/paramountplus/0064FF`],
+  ["prime video",      `${SI}/primevideo/1A98FF`],
+  ["amazon prime",     `${SI}/primevideo/1A98FF`],
   ["apple tv",         `${SI}/appletv/ffffff`],
   ["max (hbo",         `${SI}/hbomax/ffffff`],
   ["hbo max",          `${SI}/hbomax/ffffff`],
-  ["crunchyroll",      `${SI}/crunchyroll`],
-  ["peacock",          `${WIKI}/d/d3/NBCUniversal_Peacock_Logo.svg`],
-  ["dazn",             `${SI}/dazn`],
-  // MENA Streaming — Wikipedia URLs (load fine in browser)
+  ["crunchyroll",      `${SI}/crunchyroll/F47521`],
+  ["peacock",          `${SI}/peacock/ffffff`],
+  ["dazn",             `${SI}/dazn/F8F8F5`],
+  ["hulu",             `${SI}/hulu/1CE783`],
+  ["funimation",       `${SI}/funimation/ffffff`],
   ["osn",              `${WIKI}/8/87/OSN%2B_Logo.png`],
   ["shahid",           `${WIKI}/4/41/Shahid_Logo.svg`],
   ["anghami",          `${WIKI}/4/4c/Anghami_Logo_2021.png`],
@@ -55,45 +55,47 @@ const LOGO_RULES: Array<[string, string]> = [
   ["jawwy",            `${WIKI}/b/b6/Jawwy_TV_logo.png`],
   ["weyyak",           `${WIKI}/5/5d/Weyyak_logo.png`],
   ["watchit",          `${WIKI}/0/07/Watchit_logo.png`],
-  // Music
-  ["spotify",          `${SI}/spotify`],
-  ["apple music",      `${SI}/applemusic`],
-  ["tidal",            `${SI}/tidal`],
-  // Gaming
-  ["xbox",             `${WIKI}/f/f9/Xbox_one_logo.svg`],
-  ["playstation",      `${SI}/playstation`],
+  ["iptv",             `${SI}/livetv/ffffff`],
+  ["spotify",          `${SI}/spotify/1DB954`],
+  ["apple music",      `${SI}/applemusic/FA243C`],
+  ["tidal",            `${SI}/tidal/ffffff`],
+  ["xbox",             `${SI}/xbox/107C10`],
+  ["playstation",      `${SI}/playstation/003791`],
   ["steam",            `${SI}/steam/ffffff`],
-  ["roblox",           `${SI}/roblox`],
-  ["nintendo",         `${WIKI}/0/0d/Nintendo.svg`],
-  ["ea play",          `${SI}/ea`],
-  // VPN / Utilities
-  ["nordvpn",          `${SI}/nordvpn`],
-  ["expressvpn",       `${SI}/expressvpn`],
-  ["duolingo",         `${SI}/duolingo`],
-  // AI / Productivity — simpleicons confirmed working
+  ["roblox",           `${SI}/roblox/ffffff`],
+  ["nintendo",         `${SI}/nintendo/E60012`],
+  ["ea play",          `${SI}/ea/ffffff`],
+  ["nordvpn",          `${SI}/nordvpn/4687FF`],
+  ["expressvpn",       `${SI}/expressvpn/DA3940`],
+  ["duolingo",         `${SI}/duolingo/58CC02`],
   ["chatgpt",          `${SI}/openai/ffffff`],
   ["claude",           `${SI}/anthropic/ffffff`],
   ["midjourney",       `${WIKI}/e/e6/Midjourney_Emblem.png`],
-  ["perplexity",       `${SI}/perplexity`],
-  ["gemini",           `${SI}/googlegemini`],
+  ["perplexity",       `${SI}/perplexity/ffffff`],
+  ["gemini",           `${SI}/googlegemini/886FBF`],
   ["github copilot",   `${SI}/github/ffffff`],
-  ["grammarly",        `${SI}/grammarly`],
+  ["grammarly",        `${SI}/grammarly/15C39A`],
   ["notion",           `${SI}/notion/ffffff`],
-  ["loom",             `${SI}/loom`],
-  // Design / Dev — simpleicons confirmed working
-  ["adobe",            `${WIKI}/4/4c/Adobe_Creative_Cloud_rainbow_icon.svg`],
-  ["figma",            `${SI}/figma`],
-  ["canva",            `${WIKI}/b/b9/2023_Canva_logo.svg`],
+  ["loom",             `${SI}/loom/625DF5`],
+  ["writesonic",       `${SI}/writedotas/ffffff`],
+  ["copy.ai",          `${SI}/c/ffffff`],
+  ["jasper",           `${SI}/jasper/ffffff`],
+  ["descript",         `${SI}/descript/ffffff`],
+  ["synthesia",        `${SI}/s/ffffff`],
+  ["runway",           `${SI}/runway/ffffff`],
+  ["adobe",            `${SI}/adobe/FF0000`],
+  ["figma",            `${SI}/figma/F24E1E`],
+  ["canva",            `${SI}/canva/00C4CC`],
   ["framer",           `${SI}/framer/ffffff`],
-  ["linear",           `${SI}/linear/ffffff`],
+  ["linear",           `${SI}/linear/5E6AD2`],
   ["vercel",           `${SI}/vercel/ffffff`],
   ["cursor",           `${SI}/cursor/ffffff`],
-  ["retool",           `${SI}/retool`],
-  ["slack",            `${SI}/slack`],
-  ["google workspace", `${WIKI}/a/a9/Google_Workspace_Logo.svg`],
-  ["microsoft copilot",`${WIKI}/e/e1/Microsoft_Copilot_logo_%282023%29.svg`],
-  ["copilot",          `${WIKI}/e/e1/Microsoft_Copilot_logo_%282023%29.svg`],
-  ["microsoft 365",    `${WIKI}/4/44/Microsoft_logo.svg`],
+  ["retool",           `${SI}/retool/ffffff`],
+  ["slack",            `${SI}/slack/4A154B`],
+  ["google workspace", `${SI}/google/4285F4`],
+  ["microsoft copilot",`${SI}/microsoftcopilot/ffffff`],
+  ["copilot",          `${SI}/microsoftcopilot/ffffff`],
+  ["microsoft 365",    `${SI}/microsoft/ffffff`],
 ];
 
 function getLogoUrl(name: string, imageUrl: string): string | null {
@@ -204,6 +206,7 @@ export default function ProductCard({ product }: { product: Product }) {
               alt={product.name}
               onError={() => setLogoError(true)}
               className="h-12 w-auto max-w-[130px] object-contain transition-transform duration-300 group-hover:scale-105"
+              style={{ filter: logoUrl.includes('wikipedia') ? 'brightness(0) invert(1) brightness(0.85)' : undefined }}
             />
           ) : (
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#fb7246]/20 to-[#fb7246]/5 text-xl font-bold text-[#fb7246]">

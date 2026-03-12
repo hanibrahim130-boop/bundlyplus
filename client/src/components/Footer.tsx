@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUp, Github, Twitter, Linkedin } from "lucide-react";
 import { useRef } from "react";
+import brandFull from "@assets/5879503881551678600_1773279399060.jpg";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
@@ -15,20 +16,6 @@ const SOCIAL = [
   { icon: Linkedin, label: "LinkedIn", href: "#" },
 ];
 
-function BundlyLogo({ size = 28 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
-      <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
-      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#fb7246" />
-      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.6" />
-      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.7" />
-      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.4" />
-      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.5" />
-    </svg>
-  );
-}
-
 export default function Footer() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
@@ -38,7 +25,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer ref={ref} className="relative bg-[#1f2626] pb-10 pt-32 md:pt-48" style={{ overflowX: "hidden" }}>
+    <footer ref={ref} className="relative bg-[#050505] pb-10 pt-32 md:pt-48" style={{ overflowX: "hidden" }}>
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#fb7246]/5 blur-[200px]" />
 
@@ -81,10 +68,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-10">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
-              <BundlyLogo size={28} />
-              <span style={{ fontFamily: "var(--font-syne)" }} className="font-bold text-white">
-                Bundly<span className="text-[#fb7246]">+</span>
-              </span>
+              <img src={brandFull} alt="Bundly Plus" className="h-28 w-auto object-contain" />
             </div>
 
             <div className="flex flex-wrap gap-6">

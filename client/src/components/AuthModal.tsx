@@ -1,24 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, Lock, User, Eye, EyeOff, Loader2 } from "lucide-react";
+import brandIcon from "@assets/5879503881551678599_1773279399063.jpg";
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-}
-
-function BundlyLogo({ size = 28 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
-      <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
-      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#fb7246" />
-      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.6" />
-      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.7" />
-      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.4" />
-      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.5" />
-    </svg>
-  );
 }
 
 export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
@@ -74,7 +61,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[#233b35] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)] pointer-events-auto"
+              className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)] pointer-events-auto"
             >
               <button
                 onClick={onClose}
@@ -84,7 +71,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               </button>
 
               <div className="mb-6 flex items-center gap-3">
-                <BundlyLogo size={32} />
+                <img src={brandIcon} alt="Bundly+" className="h-10 w-10 rounded-lg object-contain" />
                 <div>
                   <h2 style={{ fontFamily: "var(--font-syne)" }} className="text-lg font-bold uppercase tracking-tight text-white">
                     {mode === "login" ? "Welcome back" : "Join Bundly+"}

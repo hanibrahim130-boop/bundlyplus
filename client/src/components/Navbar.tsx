@@ -4,6 +4,8 @@ import { ShoppingBag, User, Search, X, Menu } from "lucide-react";
 import AuthModal from "./AuthModal";
 import { useCartStore } from "../store/cartStore";
 import { useLocation } from "wouter";
+import brandIcon from "@assets/5879503881551678599_1773279399063.jpg";
+import brandFull from "@assets/5879503881551678600_1773279399060.jpg";
 
 const NAV_LINKS = [
   { label: "Home", href: "#" },
@@ -11,20 +13,6 @@ const NAV_LINKS = [
   { label: "Features", href: "#features" },
   { label: "Blog", href: "#" },
 ];
-
-function BundlyLogo({ size = 32 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 4h8c4.4 0 8 3.6 8 8s-3.6 8-8 8h-8V4z" stroke="white" strokeWidth="1.8" fill="none" />
-      <path d="M12 20h9c4.4 0 8 3.6 8 8s-3.6 8-8 8h-9V20z" stroke="white" strokeWidth="1.8" fill="none" />
-      <rect x="1" y="3" width="4" height="4" rx="0.6" fill="#fb7246" />
-      <rect x="6" y="3" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.6" />
-      <rect x="1" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.7" />
-      <rect x="6" y="8" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.4" />
-      <rect x="1" y="13" width="4" height="4" rx="0.6" fill="#fb7246" opacity="0.5" />
-    </svg>
-  );
-}
 
 export default function Navbar() {
   const [authOpen, setAuthOpen] = useState(false);
@@ -101,13 +89,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group shrink-0"
           data-testid="link-logo"
         >
-          <BundlyLogo size={34} />
-          <span
-            style={{ fontFamily: "var(--font-syne)" }}
-            className="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-[#fb7246] transition-colors"
-          >
-            Bundly<span className="text-[#fb7246]">+</span>
-          </span>
+          <img src={brandFull} alt="Bundly Plus" className="h-28 sm:h-32 w-auto object-contain" />
         </button>
 
         <div className="hidden md:flex items-center gap-8">
