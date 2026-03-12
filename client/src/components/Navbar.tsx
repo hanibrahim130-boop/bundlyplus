@@ -88,7 +88,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group shrink-0"
           data-testid="link-logo"
         >
-          <img src={brandFull} alt="Bundly Plus" className="h-14 sm:h-16 w-auto object-contain" />
+          <img src={brandFull} alt="Bundly Plus" className="h-6 w-auto object-contain" />
         </button>
 
         <div className="hidden md:flex items-center gap-8">
