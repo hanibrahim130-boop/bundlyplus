@@ -1,9 +1,4 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { storage } from "../server/storage";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
-
-const JWT_SECRET = process.env.SESSION_SECRET || "bundlyplus-secret-key";
 
 function json(res: ServerResponse, status: number, data: unknown) {
   const body = JSON.stringify(data);
@@ -15,34 +10,50 @@ function json(res: ServerResponse, status: number, data: unknown) {
 
 async function readBody(req: IncomingMessage): Promise<any> {
   return new Promise((resolve) => {
+    if ((req as any).body) return resolve((req as any).body);
     let data = "";
-    req.on("data", (chunk) => (data += chunk));
+    req.on("data", (chunk: string) => (data += chunk));
     req.on("end", () => {
       try { resolve(JSON.parse(data)); } catch { resolve({}); }
     });
   });
 }
 
-function getToken(req: IncomingMessage): string | null {
-  const auth = req.headers.authorization;
-  if (!auth?.startsWith("Bearer ")) return null;
-  return auth.slice(7);
+let _storage: any = null;
+async function getStorage() {
+  if (!_storage) {
+    const mod = await import("../server/storage");
+    _storage = mod.storage;
+  }
+  return _storage;
 }
 
-function requireAdmin(req: IncomingMessage, res: ServerResponse): boolean {
-  const token = getToken(req);
-  if (!token) { json(res, 401, { error: "Unauthorized" }); return false; }
-  try { jwt.verify(token, JWT_SECRET); return true; } catch { json(res, 401, { error: "Invalid or expired token" }); return false; }
+let _jwt: any = null;
+async function getJwt() {
+  if (!_jwt) _jwt = (await import("jsonwebtoken")).default;
+  return _jwt;
+}
+
+let _bcrypt: any = null;
+async function getBcrypt() {
+  if (!_bcrypt) _bcrypt = (await import("bcryptjs")).default;
+  return _bcrypt;
 }
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   const url = (req.url ?? "").split("?")[0].replace(/\/$/, "") || "/";
   const method = req.method ?? "GET";
 
-  if (method === "OPTIONS") { res.setHeader("Access-Control-Allow-Origin", "*"); res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS"); res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization"); res.statusCode = 204; res.end(); return; }
+  if (method === "OPTIONS") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
+    res.statusCode = 204;
+    res.end();
+    return;
+  }
 
   try {
-    // GET /api/health — diagnostics
     if (method === "GET" && url === "/api/health") {
       return json(res, 200, {
         ok: true,
@@ -50,86 +61,88 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         firebase_email: process.env.FIREBASE_CLIENT_EMAIL ? "SET" : "NOT SET",
         firebase_key: process.env.FIREBASE_PRIVATE_KEY ? `SET (${process.env.FIREBASE_PRIVATE_KEY.length} chars)` : "NOT SET",
         session: process.env.SESSION_SECRET ? "SET" : "NOT SET",
-        node_env: process.env.NODE_ENV,
+        node_env: process.env.NODE_ENV ?? "NOT SET",
       });
     }
 
-    // GET /api/products
+    const JWT_SECRET = process.env.SESSION_SECRET || "bundlyplus-secret-key";
+    const storage = await getStorage();
+
     if (method === "GET" && url === "/api/products") {
       return json(res, 200, await storage.getProducts());
     }
 
-    // GET /api/products/:id
     const productMatch = url.match(/^\/api\/products\/([^/]+)$/);
     if (method === "GET" && productMatch) {
       const product = await storage.getProduct(productMatch[1]);
       return product ? json(res, 200, product) : json(res, 404, { error: "Product not found" });
     }
 
-    // GET /api/settings (public, excludes password hash)
     if (method === "GET" && url === "/api/settings") {
       const all = await storage.getSettings();
       const { admin_password_hash: _pw, ...pub } = all;
       return json(res, 200, pub);
     }
 
-    // POST /api/admin/login
     if (method === "POST" && url === "/api/admin/login") {
+      const bcrypt = await getBcrypt();
+      const jwtLib = await getJwt();
       const body = await readBody(req);
       const { password } = body ?? {};
       if (!password) return json(res, 400, { error: "Password required" });
       const hash = await storage.getSetting("admin_password_hash");
       const valid = hash ? bcrypt.compareSync(password, hash) : password === "admin123";
       if (!valid) return json(res, 401, { error: "Invalid password" });
-      const token = jwt.sign({ admin: true }, JWT_SECRET, { expiresIn: "7d" });
+      const token = jwtLib.sign({ admin: true }, JWT_SECRET, { expiresIn: "7d" });
       return json(res, 200, { token });
     }
 
-    // GET /api/admin/verify
+    const requireAdmin = async () => {
+      const jwtLib = await getJwt();
+      const auth = req.headers.authorization;
+      if (!auth?.startsWith("Bearer ")) { json(res, 401, { error: "Unauthorized" }); return false; }
+      try { jwtLib.verify(auth.slice(7), JWT_SECRET); return true; } catch { json(res, 401, { error: "Invalid or expired token" }); return false; }
+    };
+
     if (method === "GET" && url === "/api/admin/verify") {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
       return json(res, 200, { ok: true });
     }
 
-    // GET /api/admin/products
     if (method === "GET" && url === "/api/admin/products") {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
       return json(res, 200, await storage.getProducts());
     }
 
-    // POST /api/admin/products
     if (method === "POST" && url === "/api/admin/products") {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
       const body = await readBody(req);
       const product = await storage.createProduct(body);
       return json(res, 200, product);
     }
 
-    // PUT /api/admin/products/:id
     const adminProductMatch = url.match(/^\/api\/admin\/products\/([^/]+)$/);
     if (method === "PUT" && adminProductMatch) {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
       const body = await readBody(req);
       const product = await storage.updateProduct(adminProductMatch[1], body);
       return product ? json(res, 200, product) : json(res, 404, { error: "Product not found" });
     }
 
-    // DELETE /api/admin/products/:id
     if (method === "DELETE" && adminProductMatch) {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
       const ok = await storage.deleteProduct(adminProductMatch[1]);
       return ok ? json(res, 200, { success: true }) : json(res, 404, { error: "Product not found" });
     }
 
-    // GET /api/admin/settings
     if (method === "GET" && url === "/api/admin/settings") {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
       return json(res, 200, await storage.getSettings());
     }
 
-    // PUT /api/admin/settings
     if (method === "PUT" && url === "/api/admin/settings") {
-      if (!requireAdmin(req, res)) return;
+      if (!(await requireAdmin())) return;
+      const bcrypt = await getBcrypt();
       const body = await readBody(req);
       if (body.new_password) {
         if (!body.current_password) return json(res, 400, { error: "Current password required" });
