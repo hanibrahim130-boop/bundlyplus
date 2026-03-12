@@ -42,6 +42,18 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
   if (method === "OPTIONS") { res.setHeader("Access-Control-Allow-Origin", "*"); res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS"); res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization"); res.statusCode = 204; res.end(); return; }
 
   try {
+    // GET /api/health — diagnostics
+    if (method === "GET" && url === "/api/health") {
+      return json(res, 200, {
+        ok: true,
+        firebase_project: process.env.FIREBASE_PROJECT_ID ?? "NOT SET",
+        firebase_email: process.env.FIREBASE_CLIENT_EMAIL ? "SET" : "NOT SET",
+        firebase_key: process.env.FIREBASE_PRIVATE_KEY ? `SET (${process.env.FIREBASE_PRIVATE_KEY.length} chars)` : "NOT SET",
+        session: process.env.SESSION_SECRET ? "SET" : "NOT SET",
+        node_env: process.env.NODE_ENV,
+      });
+    }
+
     // GET /api/products
     if (method === "GET" && url === "/api/products") {
       return json(res, 200, await storage.getProducts());
